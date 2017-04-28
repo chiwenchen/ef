@@ -2,9 +2,9 @@ class AdminController < UsersController
   layout 'admin'
   before_action :must_be_admin
 
-  def index
+  def index 
 
-  end
+  end 
 
   private
 

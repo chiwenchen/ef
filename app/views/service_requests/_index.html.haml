@@ -1,0 +1,31 @@
+.row
+  .col-md-12
+    .box
+      %p#notice= notice
+      .box-header.with-border 
+        / %h3 Listing Service Requests
+        / = link_to 'New Service Request', new_customers_service_request_path, class: 'btn bg-purple'
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th 單號
+              %th 標題
+              %th 客訴種類
+              %th 期限
+              %th 狀態
+              %th 操作
+          %tbody
+            - service_requests.each do |sr|
+              %tr
+                %td= sr.id[0..7]
+                %td= sr.title
+                %td= sr.category.title
+                %td= sr.deadline
+                %td= sr.state
+                %td
+                  = link_to '查看細節', [role, sr]
+                  / = link_to '修改', edit_customer_service_request_path(sr)
+
+                / %td= link_to '編輯', edit_manager_princess_path(princess)
+                / %td= link_to '刪除', manager_princess_path(princess), method: :delete, data: { confirm: 'Are you sure?' }

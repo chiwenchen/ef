@@ -12,11 +12,19 @@ Rails.application.routes.draw do
   end
 
   resources :service_requests
-  resources :admin
   resources :staffs
   namespace :customer do
     root to: 'service_requests#index'
     resources :service_requests
   end
-  
+
+  namespace :admin do
+    root to: 'service_requests#index'
+    resources :service_requests, only: [:show, :index] do
+      member do
+        post 'change_state', to: 'service_requests#change_state'
+      end
+    end
+  end
+
 end

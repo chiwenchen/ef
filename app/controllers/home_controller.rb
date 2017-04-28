@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
   def redirect_if_has_role
     if current_user.admin?
-      redirect_to admin_index_path
+      redirect_to admin_root_path
     elsif current_user.tech? || current_user.sales?
       redirect_to staffs_path
     elsif current_user.customer?
