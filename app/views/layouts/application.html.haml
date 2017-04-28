@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= Setting.app_name
+    = stylesheet_link_tag    'application'
+    %link(href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" type="text/css")
+    %link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css")
+    = csrf_meta_tags
+  %body.skin-blue
+    = render 'common/navigation'
+    .container-fluid
+      = yield :before_container
+    %main(class="container")
+      = render 'common/messages'
+      = yield
+    .container-fluid
+      = yield :after_container
+    = javascript_include_tag 'application'
+    / = render 'common/footer'
+    / = render partial: "common/facebook_sdk"
+    = yield :javascripts

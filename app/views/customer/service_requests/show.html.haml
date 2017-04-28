@@ -1,0 +1,36 @@
+.row
+  .col-md-6
+    .box
+      .box-header.with-border
+        Service Request Basic Info
+      .box-body
+        %table.table.table-bordered
+          %tbody
+            %tr
+              %th 單號
+              %th= @service_request.id[0..7]
+            %tr
+              %th 標題
+              %th= @service_request.title
+            %tr
+              %th 客訴種類
+              %th= @service_request.category.title
+            %tr
+              %th 期限
+              %th= @service_request.deadline
+            %tr
+              %th 狀態
+              %th= @service_request.state
+    .box
+      .box-header.with-border
+        Service Request Description
+      .box-body
+        = @service_request.description
+.row
+  .col-md-10
+    .box
+      .box-header.with-border
+        Photos
+      .box-body
+        - @service_request.images.each do |image|
+          = image_tag image.file, size: '120 x 80'

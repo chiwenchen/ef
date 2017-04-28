@@ -1,0 +1,22 @@
+default: &default
+  encoding: utf8
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: ef-develop
+
+staging:
+  <<: *default
+  database: ef-staging
+
+test:
+  <<: *default
+  database: ef-test
+
+production:
+  <<: *default
+  database: ef-production
+
