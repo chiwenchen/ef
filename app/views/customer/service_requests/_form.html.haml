@@ -1,0 +1,32 @@
+.row
+  .col-sm-5.col-sm-offset-1
+    = simple_form_for [:customer, service_request] do |f|
+      = f.input :title, input_html: {class: 'form-control'}
+      = f.association :category, include_hidden: false, include_blank: false, input_html: {class: 'form-control'}
+      = f.input :description,as: :text, input_html: {class: 'form-control', rows: 10}
+      = f.input :deadline, as: :date_time_picker, input_html: {class: 'form-control col-md-3 datepicker'}
+      / .inline-picker
+      %h4 Upload Images
+      #images
+        = f.simple_fields_for :images do |image|
+          = render 'image_fields', f: image
+        .links
+          = link_to_add_association f, :images do
+            .btn.btn-primary.btn-sm Add Image
+      %h4 Upload Attachments
+      #attachments
+        = f.simple_fields_for :attachments do |attachment|
+          = render 'attachment_fields', f: attachment
+        .links
+          = link_to_add_association f, :attachments do
+            .btn.btn-primary.btn-sm Add Attachment
+      .action
+        = f.button :submit, 'Submit'
+        = link_to 'Cancle', customer_root_path, class: 'btn btn-default'
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+      // $('.inline-picker').datepicker();
+    });

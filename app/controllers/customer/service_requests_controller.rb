@@ -21,6 +21,7 @@ class Customer::ServiceRequestsController < CustomersController
 
   # GET /service_requests/1/edit
   def edit
+    
   end
 
   # POST /service_requests
@@ -32,7 +33,6 @@ class Customer::ServiceRequestsController < CustomersController
       if @service_request.valid?
         @service_request.customer = current_user
         @service_request.deadline = Date.strptime(service_request_params[:deadline], '%m/%d/%Y')
-        binding.pry
         @service_request.save
         format.html { redirect_to customer_root_path, notice: 'Service request was successfully created.' }
       else

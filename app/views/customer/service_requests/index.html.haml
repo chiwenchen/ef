@@ -23,6 +23,9 @@
                 %td= sr.category.title
                 %td= sr.deadline
                 %td= sr.state
-                %td= link_to '查看細節', [:customer, sr]
+                %td
+                  = link_to '查看細節', [:customer, sr]
+                  / = link_to '修改', edit_customer_service_request_path(sr)
+
                 / %td= link_to '編輯', edit_manager_princess_path(princess)
                 / %td= link_to '刪除', manager_princess_path(princess), method: :delete, data: { confirm: 'Are you sure?' }

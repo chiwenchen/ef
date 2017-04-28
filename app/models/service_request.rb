@@ -17,8 +17,8 @@
 class ServiceRequest < ActiveRecord::Base
   belongs_to :category
   belongs_to :customer, foreign_key: :customer_id, class_name: 'User'
-  has_many :images, dependent: :destroy
-  has_many :attachments, dependent: :destroy
+  has_many :images, dependent: :destroy, inverse_of: :service_request
+  has_many :attachments, dependent: :destroy, inverse_of: :service_request
   accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
 

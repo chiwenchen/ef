@@ -33,4 +33,13 @@
         Photos
       .box-body
         - @service_request.images.each do |image|
-          = image_tag image.file, size: '120 x 80'
+          = link_to image.file.url do
+            = image_tag image.file, size: '120 x 80'
+.row
+  .col-md-10
+    .box
+      .box-header.with-border
+        Attachments
+      .box-body
+        - @service_request.attachments.each do |attachment|
+          = link_to File.basename(attachment.file.path), attachment.file.url
