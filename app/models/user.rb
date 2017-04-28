@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :service_requests, foreign_key: :customer_id
+  has_many :comments
 
   validates_uniqueness_of :username
 

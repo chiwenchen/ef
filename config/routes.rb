@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :service_requests
+  resources :service_requests do
+    resources :comments, only: [:create]
+  end
   resources :staffs
   namespace :customer do
     root to: 'service_requests#index'

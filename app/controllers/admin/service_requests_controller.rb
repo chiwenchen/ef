@@ -6,11 +6,12 @@ class Admin::ServiceRequestsController < AdminController
   end
 
   def show
+    @comments = @service_request.comments.order('created_at DESC')
   end
 
   def change_state
     @service_request.update_column(:state, params[:target_state])
-    render :show
+    redirect_to admin_service_request_path(@service_request)
 
   end
 

@@ -10,6 +10,7 @@ class Customer::ServiceRequestsController < CustomersController
   # GET /service_requests/1
   # GET /service_requests/1.json
   def show
+    @comments = @service_request.comments.order('created_at DESC')
   end
 
   # GET /service_requests/new

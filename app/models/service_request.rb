@@ -21,6 +21,7 @@ class ServiceRequest < ActiveRecord::Base
   has_many :attachments, dependent: :destroy, inverse_of: :service_request
   accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
+  has_many :comments
 
   extend Enumerize
   enumerize :state, in: [:initial, :processing, :complete], default: :initial
