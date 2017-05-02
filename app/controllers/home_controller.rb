@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     if current_user.admin?
       redirect_to admin_root_path
     elsif current_user.tech? || current_user.sales?
-      redirect_to staffs_path
+      redirect_to staff_root_path
     elsif current_user.customer?
       redirect_to customer_root_path
     end

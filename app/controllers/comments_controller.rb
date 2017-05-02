@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     elsif current_user.customer?
       redirect_to customer_service_request_path(@service_request)
     else
-      # redirect to staff service request path
+      redirect_to staff_service_request_path(@service_request)
     end
   end
 
