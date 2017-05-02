@@ -12,7 +12,18 @@ class Admin::ServiceRequestsController < AdminController
   def change_state
     @service_request.update_column(:state, params[:target_state])
     redirect_to admin_service_request_path(@service_request)
+  end
 
+  def update_assignment
+    @service_request = ServiceRequest.find(params[:id])
+    @service_request.assignments.destroy_all
+    if service_request_params and service_request_params['responsible_ids']
+      service_request_params['responsible_ids'].each do |responsible|
+        Assignment.create(user_id: responsible, service_request: @service_request)
+      end
+    end
+    flash[:notice] = 'Assignment update successfully'
+    redirect_to admin_service_request_path(@service_request)
   end
 
   private
@@ -21,11 +32,15 @@ class Admin::ServiceRequestsController < AdminController
       @service_request = ServiceRequest.find(params[:id])
     end
 
-
     def service_request_params
-      params.require(:service_request).permit(:title, :category_id, :description, :deadline, 
-        images_attributes: [:id, :file, :_destroy], 
-        attachments_attributes: [:id, :file, :_destroy]
-      )
+      if params[:service_request].present?
+        params.require(:service_request).permit(:title, :category_id, :description, :deadline, 
+          images_attributes: [:id, :file, :_destroy], 
+          attachments_attributes: [:id, :file, :_destroy]
+        )
+        params.require(:service_request).tap do |whitelisted|
+          whitelisted[:file] = params[:responsible_ids]
+        end
+      end
     end
 end

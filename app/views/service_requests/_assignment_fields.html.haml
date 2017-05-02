@@ -1,0 +1,3 @@
+.nested-fields.well
+  = link_to_remove_association icon("remove"), f
+  = f.association :user, as: :select, label_method: :username, collection: User.admins + User.sales + User.teches, include_hidden: false

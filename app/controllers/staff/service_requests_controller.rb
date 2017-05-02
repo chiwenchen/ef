@@ -2,7 +2,7 @@ class Staff::ServiceRequestsController < StaffsController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
-    @service_requests = ServiceRequest.all
+    @service_requests = current_user.assigned_service_requests
     # change to staff belongs only
   end
 

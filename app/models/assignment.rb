@@ -1,17 +1,15 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: assignments
 #
-#  id                 :integer          not null, primary key
+#  id                 :uuid             not null, primary key
 #  service_request_id :uuid
 #  user_id            :uuid
-#  body               :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
 
-class Comment < ActiveRecord::Base
-  belongs_to :service_request
+class Assignment < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :body
+  belongs_to :service_request
 end

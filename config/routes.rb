@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :service_requests, only: [:show, :index] do
       member do
         post 'change_state', to: 'service_requests#change_state'
+        post 'update_assignment', to: 'service_requests#update_assignment'
       end
     end
   end
