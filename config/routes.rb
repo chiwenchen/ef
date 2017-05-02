@@ -14,10 +14,15 @@ Rails.application.routes.draw do
   resources :service_requests do
     resources :comments, only: [:create]
   end
-  resources :staffs
+  # resources :staffs
   namespace :customer do
     root to: 'service_requests#index'
     resources :service_requests
+  end
+
+  namespace :staff do
+    root to: 'service_requests#index'
+    resources :service_requests, only: [:show, :index]
   end
 
   namespace :admin do

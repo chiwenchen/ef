@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title= Setting.app_name
+    %meta{:charset => "UTF-8"}
+    %meta{name: "text:Google Basic Font", content: "Noto Sans TC"}
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tag
+    = yield :stylesheets
+  %body.skin-green-light.fixed.sidebar-mini
+    .wrapper
+      = render 'common/navigation'
+      = render 'common/sidebar'
+      .content-wrapper
+        %section.content-header
+          %h1= yield :title
+        %section.content
+          = render 'common/messages'
+          = yield
+      %footer.main-footer
+        %strong Copyright &copy; 2016-2017 ZaiDei. All rights reserved. Theme powdered by
+        %a{:href => "https://almsaeedstudio.com/"} Almsaeed Studio
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = yield :javascripts

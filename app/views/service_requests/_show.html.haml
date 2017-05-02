@@ -38,7 +38,7 @@
       .box-body
         - @service_request.images.each do |image|
           = link_to image.file.url do
-            = image_tag image.file, size: '120 x 80'
+            = image_tag image.file, size: '120x80'
 .row
   .col-md-10
     .box
@@ -46,7 +46,7 @@
         Attachments
       .box-body
         - @service_request.attachments.each do |attachment|
-          = link_to File.basename(attachment.file.path), attachment.file.url
+          = link_to File.basename(attachment.file.path), attachment.file.url, target: '_blank'
 .row
   .col-md-10
     .box
