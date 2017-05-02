@@ -3,8 +3,12 @@
     %ul.nav.sidebar-menu
       %li.header 管理 Panel
       - if current_user.admin?
-        %li= link_to '新增使用者', new_user_registration_path
+        / %li= link_to '新增使用者', new_user_registration_path
         %li= link_to '客訴單清單', admin_root_path
+        %li= link_to '員工清單', admin_staffs_path
+        %li= link_to '客戶清單', admin_customers_path
+      - if current_user.sales? or current_user.tech?
+        %li= link_to '客訴單清單', staff_root_path
       - if current_user.customer?
         %li= link_to '新增客訴單', new_customer_service_request_path
         %li= link_to '客訴單清單', customer_root_path
