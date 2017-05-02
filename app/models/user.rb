@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   has_many :service_requests, foreign_key: :customer_id
   has_many :comments
+  has_many :assignments
+  has_many :assigned_service_requests, through: :assignments, source: :service_request
 
   validates_uniqueness_of :username
 

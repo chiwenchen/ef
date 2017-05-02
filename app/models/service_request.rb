@@ -23,6 +23,10 @@ class ServiceRequest < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
   has_many :comments
 
+  has_many :assignments
+  has_many :responsibles, through: :assignments, source: :user
+  accepts_nested_attributes_for :assignments, reject_if: :all_blank, allow_destroy: true
+
   extend Enumerize
   enumerize :state, in: [:initial, :processing, :complete], default: :initial
 

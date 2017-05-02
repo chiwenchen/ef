@@ -11,20 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428083100) do
+ActiveRecord::Schema.define(version: 20170502054939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "assignments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "service_request_id"
+    t.uuid     "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "attachments", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "file"
     t.uuid     "service_request_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  create_table "categories", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "categories", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,14 +45,14 @@ ActiveRecord::Schema.define(version: 20170428083100) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "images", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "images", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "file"
     t.uuid     "service_request_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  create_table "royce_connector", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "royce_connector", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "roleable_id",   null: false
     t.string   "roleable_type", null: false
     t.uuid     "role_id",       null: false
@@ -56,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170428083100) do
   add_index "royce_connector", ["role_id"], name: "index_royce_connector_on_role_id", using: :btree
   add_index "royce_connector", ["roleable_id", "roleable_type"], name: "index_royce_connector_on_roleable_id_and_roleable_type", using: :btree
 
-  create_table "royce_role", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "royce_role", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -64,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170428083100) do
 
   add_index "royce_role", ["name"], name: "index_royce_role_on_name", using: :btree
 
-  create_table "service_requests", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "service_requests", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "request_id"
     t.string   "title"
     t.uuid     "customer_id"
@@ -76,7 +83,7 @@ ActiveRecord::Schema.define(version: 20170428083100) do
     t.string   "state"
   end
 
-  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "users", id: :uuid, default: nil, force: :cascade do |t|
     t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
