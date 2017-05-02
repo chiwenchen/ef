@@ -48,6 +48,8 @@ gem 'rails-assets-adminlte', source: 'https://rails-assets.org'
 
 gem 'html2haml'
 
+gem 'easy_translate'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'

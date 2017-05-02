@@ -66,7 +66,7 @@
         Photos
       .box-body
         - @service_request.images.each do |image|
-          = link_to image.file.url do
+          = link_to image.file.url, target: '_blank' do
             = image_tag image.file, size: '320x240'
 .row
   .col-md-10
