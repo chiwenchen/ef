@@ -33,6 +33,8 @@ Rails.application.routes.draw do
         post 'update_assignment', to: 'service_requests#update_assignment'
       end
     end
+    resources :staffs, only: [:index, :show]
+    resources :customers, only: [:index, :show]
   end
 
 end

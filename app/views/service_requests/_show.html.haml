@@ -7,6 +7,9 @@
         %table.table.table-bordered
           %tbody
             %tr
+              %th 客戶名
+              %th= @service_request.customer.username
+            %tr
               %th 單號
               %th= @service_request.id[0..7]
             %tr
@@ -43,9 +46,9 @@
                 .info-box-icon.bg-aqua
                   %i.fa.fa-user
                 .info-box-content
-                  .username= "Name: #{a.user.username}"
+                  .username= "姓名: #{a.user.username}"
                   .role
-                    = "Role: #{a.user.role_list.first}"
+                    = "角色: #{a.user.role_list.first}"
           - else
             .col-md-3 未指派任何人員
         - if current_user.admin?
@@ -64,7 +67,7 @@
       .box-body
         - @service_request.images.each do |image|
           = link_to image.file.url do
-            = image_tag image.file, size: '120x80'
+            = image_tag image.file, size: '320x240'
 .row
   .col-md-10
     .box

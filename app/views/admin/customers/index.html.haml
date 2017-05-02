@@ -1,0 +1,14 @@
+.row
+  - @customers.each do |customer|
+    .col-md-4
+      .box.box-widget.widget-user-2
+        .widget-user-header.bg-red
+          .widget-user-image
+            / put user avatar here, image_tag
+          %h3.widget-user-username= customer.username
+          %h5.widget-user-desc= customer.role_list.first
+        .box-footer.no-padding
+          %ul.nav.nav-stacked
+            - ServiceRequest.all.each do |s|
+              %li
+                = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
