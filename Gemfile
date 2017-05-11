@@ -50,6 +50,9 @@ gem 'html2haml'
 
 gem 'easy_translate'
 
+gem 'to_lang'
+
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'

@@ -33,6 +33,11 @@
         Service Request Description
       .box-body
         = @service_request.description
+    .box
+      .box-header.with-border
+        Service Request Description - Translated by Google
+      .box-body
+        = @service_request.translated_desc
 .row
   .col-md-10
     .box
@@ -66,8 +71,8 @@
         Photos
       .box-body
         - @service_request.images.each do |image|
-          = link_to image.file.url, target: '_blank' do
-            = image_tag image.file, size: '320x240'
+          = link_to image.file_path.url, target: '_blank' do
+            = image_tag image.file_path, size: '320x240'
 .row
   .col-md-10
     .box
@@ -75,7 +80,7 @@
         Attachments
       .box-body
         - @service_request.attachments.each do |attachment|
-          = link_to File.basename(attachment.file.path), attachment.file.url, target: '_blank'
+          = link_to File.basename(attachment.file_path.path), attachment.file_path.url, target: '_blank'
 .row
   .col-md-10
     .box
@@ -86,17 +91,4 @@
               = f.input :body, input_html: {class: 'form-control', rows: 6}, label: false
             .col-md-2
               = f.button :submit, class: 'btn btn-warning'
-.row
-  .col-md-10
-    .box
-      .box-header.with-border
-        Comments
-      .box-body
-        - @comments.each do |comment|
-          .row
-            .col-md-2
-              .name= "#{comment.user.username} 回覆："
-              .time= comment.created_at.localtime
-            .col-md-10
-              .well
-                = comment.body
+= render 'service_requests/comments', comments: @comments

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # resources :staffs
   namespace :customer do
     root to: 'service_requests#index'
-    resources :service_requests
+    resources :service_requests, only: [:index, :show, :new, :create, :edit, :update]
   end
 
   namespace :staff do

@@ -1,0 +1,17 @@
+.row
+  .col-md-10
+    .box
+      .box-header.with-border
+        Comments
+      .box-body
+        - if comments.present?
+          - comments.each do |comment|
+            .row
+              .col-md-2
+                .name= "#{comment.user.username} 回覆："
+                .time= comment.created_at.localtime
+              .col-md-10
+                .well
+                  = comment.body
+        - else
+          No comments yet
