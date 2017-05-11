@@ -13,6 +13,7 @@ defaults: &defaults
   twilio_token: a6bc2b884b5067fe03981547e35a0edd
   twilio_number: "+19376883888"
   sms_send_interval: 60
+  google_translate_api_key: AIzaSyAIj30NFue1x2UJpfT58qiK89uIJIk0xng
 development:
   <<: *defaults
   url: http://localhost:3000

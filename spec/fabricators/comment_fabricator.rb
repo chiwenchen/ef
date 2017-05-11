@@ -2,7 +2,7 @@
 #
 # Table name: comments
 #
-#  id                 :integer          not null, primary key
+#  id                 :uuid             not null, primary key
 #  service_request_id :uuid
 #  user_id            :uuid
 #  body               :text
