@@ -10,8 +10,11 @@
               .col-md-2
                 .name= "#{comment.user.username} 回覆："
                 .time= comment.created_at.localtime
-              .col-md-10
+              .col-md-5
                 .well
                   = comment.body
+              .col-md-5
+                .well
+                  = comment.translated_body
         - else
           No comments yet

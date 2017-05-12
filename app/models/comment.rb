@@ -8,6 +8,7 @@
 #  body               :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  translated_body    :text
 #
 
 class Comment < ActiveRecord::Base

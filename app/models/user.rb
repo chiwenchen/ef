@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   attr_accessor :role
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   def email_required?

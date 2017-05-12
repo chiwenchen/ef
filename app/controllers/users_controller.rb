@@ -28,4 +28,32 @@ class UsersController < ApplicationController
   # def set_user
   #   @user = User.find(params[:id]) 
   # end
+
+  def new
+    render 'devise/registrations/new'
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      @user.add_role params[:user][:role]
+      sign_out current_user
+      sign_in @user
+      redirect_to root_path
+    else
+      @user.errors.full_messages.each do |msg|
+        flash[:notice] = msg
+      end
+      render 'devise/registrations/new'
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+
+
 end

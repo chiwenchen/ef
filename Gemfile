@@ -48,8 +48,8 @@ gem 'rails-assets-adminlte', source: 'https://rails-assets.org'
 
 gem 'html2haml'
 
+#translate
 gem 'easy_translate'
-
 gem 'to_lang'
 
 

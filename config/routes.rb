@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users
   
   devise_scope :user do
     root to: "devise/sessions#new"
@@ -11,18 +11,28 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:new, :create]
+
   resources :service_requests do
     resources :comments, only: [:create]
   end
   # resources :staffs
   namespace :customer do
     root to: 'service_requests#index'
-    resources :service_requests, only: [:index, :show, :new, :create, :edit, :update]
+    resources :service_requests, only: [:index, :show, :new, :create, :edit, :update] do
+      member do
+        post 'change_state', to: 'service_requests#change_state'
+      end
+    end
   end
 
   namespace :staff do
     root to: 'service_requests#index'
-    resources :service_requests, only: [:show, :index]
+    resources :service_requests, only: [:show, :index] do
+      member do
+        post 'change_state', to: 'service_requests#change_state'
+      end
+    end
   end
 
   namespace :admin do

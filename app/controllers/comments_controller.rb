@@ -6,6 +6,10 @@ class CommentsController < ApplicationController
       user: current_user,
       service_request: @service_request
     )
+    
+    auto_change_to_process_if_state_is_initial
+    message_translate(@comment.body)
+
     if current_user.admin?
       redirect_to admin_service_request_path(@service_request)
     elsif current_user.customer?
@@ -19,5 +23,17 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def auto_change_to_process_if_state_is_initial
+    @service_request.process! if @service_request.initial?
+  end
+
+  def message_translate(origin_msg)
+    if EasyTranslate.detect(origin_msg) == 'zh-CN' || EasyTranslate.detect(origin_msg) == 'zh-TW'
+      @comment.update_column(:translated_body, EasyTranslate.translate(origin_msg, to: 'en'))
+    else
+      @comment.update_column(:translated_body, EasyTranslate.translate(origin_msg, to: 'zh-TW'))
+    end
   end
 end

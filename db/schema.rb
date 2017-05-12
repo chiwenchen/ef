@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511064705) do
+ActiveRecord::Schema.define(version: 20170512081559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170511064705) do
     t.text     "body"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.text     "translated_body"
   end
 
   create_table "images", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
