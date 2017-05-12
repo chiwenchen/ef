@@ -1,42 +1,64 @@
 .row
-  - @admins.each do |admin|
-    .col-md-4
-      .box.box-widget.widget-user-2
-        .widget-user-header.bg-yellow
-          .widget-user-image
-            / put user avatar here, image_tag
-          %h3.widget-user-username= admin.username
-          %h5.widget-user-desc= admin.role_list.first
-        .box-footer.no-padding
-          %ul.nav.nav-stacked
-            - ServiceRequest.all.each do |s|
-              %li
-                = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong 管理員名單
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th 姓名
+              %th 註冊日期
+          %tbody
+            - @admins.each do |admin|
+              %tr
+                %td= admin.username
+                %td= admin.created_at.to_s(:simple_date)
 .row
-  - @sales.each do |sales|
-    .col-md-4
-      .box.box-widget.widget-user-2
-        .widget-user-header.bg-green
-          .widget-user-image
-            / put user avatar here
-          %h3.widget-user-username= sales.username
-          %h5.widget-user-desc= sales.role_list.first
-        .box-footer.no-padding
-          %ul.nav.nav-stacked
-            - sales.assigned_service_requests.each do |s|
-              %li
-                = link_to "客訴單標題： #{s.title}", admin_service_request_path(s)
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong 業務人員名單
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th 姓名
+              %th 客訴單數量
+              %th 客訴單
+              %th 註冊日期
+          %tbody
+            - @sales.each do |sales|
+              %tr
+                %td= sales.username
+                %td= sales.assigned_service_requests.count
+                %td
+                  %ul.nav.nav-stacked
+                    - sales.assigned_service_requests.each do |s|
+                      %li
+                        = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+                %td= sales.created_at.to_s(:simple_date)
 .row
-  - @teches.each do |tech|
-    .col-md-4
-      .box.box-widget.widget-user-2
-        .widget-user-header.bg-yellow
-          .widget-user-image
-            / put user avatar here
-          %h3.widget-user-username= tech.username
-          %h5.widget-user-desc= tech.role_list.first
-        .box-footer.no-padding
-          %ul.nav.nav-stacked
-            - tech.assigned_service_requests.each do |s|
-              %li
-                = link_to "客訴單標題： #{s.title}", admin_service_request_path(s)
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong 技師名單
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th 姓名
+              %th 客訴單數量
+              %th 客訴單
+              %th 註冊日期
+          %tbody
+            - @teches.each do |tech|
+              %tr
+                %td= tech.username
+                %td= tech.assigned_service_requests.count
+                %td
+                  %ul.nav.nav-stacked
+                    - tech.assigned_service_requests.each do |s|
+                      %li
+                        = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+                %td= tech.created_at.to_s(:simple_date)

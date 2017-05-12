@@ -7,11 +7,11 @@
         = f.text_field :username, autofocus: true, placeholder: 'User Name', class: 'form-control'
       .form-group
         = f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'
-      - if devise_mapping.rememberable?
-        .form-group
-          = f.check_box :remember_me
-          = f.label :remember_me
+      / - if devise_mapping.rememberable?
+      /   .form-group
+      /     = f.check_box :remember_me
+      /     = f.label :remember_me
       .form-group
         = f.submit "Log in", class: "btn btn-primary btn-block btn-lg"
-    .text-center
-      = render "devise/shared/links"
+    / .text-center
+    /   = render "devise/shared/links"

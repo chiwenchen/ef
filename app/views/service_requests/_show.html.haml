@@ -25,14 +25,15 @@
               %th 狀態
               %th
                 .float-left= @service_request.state
-                - if current_user.admin?
-                  = render 'admin/service_requests/change_state', service_request: @service_request, state: @service_request.state
-
+                = render '/service_requests/change_state', service_request: @service_request, state: @service_request.state
+.row
+  .col-md-6
     .box
       .box-header.with-border
         Service Request Description
       .box-body
         = @service_request.description
+  .col-md-6
     .box
       .box-header.with-border
         Service Request Description - Translated by Google
@@ -62,7 +63,7 @@
           .row
             .col-md-12.assignment-form
               = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
-                = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.admins + User.sales + User.teches, include_hidden: false, label: 'Change assignment'
+                = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
                 = f.button :submit, 'Update Assignment'
 .row
   .col-md-10

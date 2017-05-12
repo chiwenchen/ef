@@ -10,6 +10,11 @@ class Staff::ServiceRequestsController < StaffsController
     @comments = @service_request.comments.order('created_at DESC')
   end
 
+  def change_state
+    @service_request.send("#{params[:aasm_event]}!")
+    redirect_to staff_service_request_path(@service_request)
+  end
+
   private
 
     def set_service_request

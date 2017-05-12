@@ -5,11 +5,11 @@
     .collapse.navbar-collapse.navbar-custom-menu
       %span.sr-only Toggle navigation
       %ul.nav.navbar-nav
-        / - if current_user and current_user.admin?
-        - if !user_signed_in?
-          %li= link_to '登入', new_user_session_path
-          %li= link_to '註冊', new_user_registration_path
+        / - if !user_signed_in?
+        /   %li= link_to '登入', new_user_session_path
         - if user_signed_in?
+          - if current_user.admin?
+            %li= link_to '註冊新用戶', new_user_path
           - if current_user.sales? || current_user.tech?
             %li= link_to '員工後台', '#'
           %li.dropdown

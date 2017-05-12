@@ -1,14 +1,24 @@
 .row
-  - @customers.each do |customer|
-    .col-md-4
-      .box.box-widget.widget-user-2
-        .widget-user-header.bg-red
-          .widget-user-image
-            / put user avatar here, image_tag
-          %h3.widget-user-username= customer.username
-          %h5.widget-user-desc= customer.role_list.first
-        .box-footer.no-padding
-          %ul.nav.nav-stacked
-            - ServiceRequest.all.each do |s|
-              %li
-                = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong 客戶名單
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th 姓名
+              %th 客訴單數量
+              %th 客訴單
+              %th 註冊日期
+          %tbody
+            - @customers.each do |customer|
+              %tr
+                %td= customer.username
+                %td= customer.service_requests.count
+                %td
+                  %ul.nav.nav-stacked
+                    - customer.service_requests.each do |s|
+                      %li
+                        = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+                %td= customer.created_at.to_s(:simple_date)

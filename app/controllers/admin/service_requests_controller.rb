@@ -10,7 +10,7 @@ class Admin::ServiceRequestsController < AdminController
   end
 
   def change_state
-    @service_request.update_column(:state, params[:target_state])
+    @service_request.send("#{params[:aasm_event]}!")
     redirect_to admin_service_request_path(@service_request)
   end
 

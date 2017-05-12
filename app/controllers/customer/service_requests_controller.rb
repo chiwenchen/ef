@@ -1,5 +1,5 @@
 class Customer::ServiceRequestsController < CustomersController
-  before_action :set_service_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_service_request, only: [:show, :edit, :update, :destroy, :change_state]
 
   def index
     @service_requests = ServiceRequest.where(customer: current_user)
@@ -57,7 +57,13 @@ class Customer::ServiceRequestsController < CustomersController
     end
   end
 
+  def change_state
+    @service_request.send("#{params[:aasm_event]}!")
+    redirect_to customer_service_request_path(@service_request)
+  end
+
   private
+
     def set_service_request
       @service_request = ServiceRequest.find(params[:id])
     end
