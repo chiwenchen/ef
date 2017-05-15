@@ -1,0 +1,49 @@
+'zh-TW':
+  hello: 哈囉
+  sign_in: 登入
+  sign_out: 登出
+  sign_up: 註冊
+  username: 姓名
+  password: 密碼
+  service_system: 客服系統
+  name: 姓名
+  requests_amount: 客訴單數量
+  requests: 客訴單
+  requests_list: 客訴單清單
+  register_date: 註冊日期
+  service_request:
+    title: 標題
+    state: 狀態
+    add: 新增客訴單
+    index: 單號
+    customer_name: 客戶名稱
+    category: 客訴種類
+    deadline: 期限
+    assign_amount: 指派人員數
+    comments_amount: 留言回覆數
+    operation: 操作
+    not_assigned: 未指派人員
+    no_comments: 無留言
+    check_detail: 查看細節
+    description: 問題描述
+    translate_desc: 問題描述 - 翻譯
+  admin_list: 管理員名單
+  sales_list: 業務人員名單
+  tech_list: 技師名單
+  customer_list: 客戶名單
+  staffs_list: 員工清單
+  add_new_user: 新增使用者
+  control_panel: 功能面板
+  upload_images: 上傳圖片
+  upload_attachments: 上傳附件
+  images: 圖片
+  attachments: 附件
+  assignment: 人員指派
+  cancle: 取消
+  submit: 送出
+  edit: 編輯
+  reply: 回覆
+  no_comments: 無留言
+  comments:
+    title: 留言板
+    unit: 則

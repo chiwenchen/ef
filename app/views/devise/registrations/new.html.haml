@@ -1,10 +1,10 @@
 .row
   .col-sm-4.col-sm-offset-4
-    %h1.text-center Sign Up
-    %hr/
+    %h1.text-center= t('sign_up')
+    %hr
     = simple_form_for User.new do |f|
       = f.input :username, input_html: {class: 'form-control'}
       = f.input :password, input_html: {class: 'form-control'}
       = f.input :password_confirmation, input_html: {class: 'form-control'}
       = f.input :role, as: :radio_buttons, collection: [:admin, :sales, :tech, :customer], checked: :sales
-      = f.button :submit, 'Sign Up'
+      = f.button :submit, t('sign_up')

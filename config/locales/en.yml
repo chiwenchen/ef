@@ -1,23 +1,49 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  hello: Hello
+  sign_in: Sign In
+  sign_out: Sign Out
+  sign_up: Sign Up
+  username: User Name
+  password: Password
+  service_system: Service System
+  name: Name
+  requests_amount: Request Amount
+  requests: Service Requsts
+  requests_list: Requests List
+  register_date: Register Date
+  service_request:
+    title: Title
+    state: State
+    add: Create Request
+    index: No.
+    customer_name: Customer Name
+    category: Category
+    deadline: Deadline
+    assign_amount: Assigned
+    comments_amount: Comments
+    operation: Operate
+    not_assigned: Not assigned
+    no_comments: No comments
+    check_detail: Detail
+    description: Issue Description
+    translate_desc: Issue Description - Auto Translate
+  admin_list: Administrator List
+  sales_list: Sales List
+  tech_list: Technicians List
+  customer_list: Customers List
+  staffs_list: Staffs List
+  add_new_user: Add User
+  control_panel: Control Panel
+  upload_images: Upload Images
+  upload_attachments: Upload Attachments
+  images: Images
+  attachments: Attachments
+  assignment: Assignments
+  cancle: Cancle
+  submit: Submit
+  edit: Edit
+  reply: reply
+  no_comments: No comments yet
+  comments:
+    title: Comments
+    unit: replys
