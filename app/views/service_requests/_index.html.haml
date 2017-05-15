@@ -26,7 +26,7 @@
                 %td= sr.title
                 %td= sr.category.title
                 %td= sr.deadline
-                %td= sr.state
+                %td= ServiceRequest.human_attribute_name(sr.state)
                 %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
                 %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
                 %td

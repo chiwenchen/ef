@@ -19,6 +19,5 @@
                 %td
                   %ul.nav.nav-stacked
                     - customer.service_requests.each do |s|
-                      %li
-                        = link_to "#{t('service_request.title')}： #{s.title}, #{t('service_request.state')}：#{s.state}", admin_service_request_path(s)
+                      %li= render 'admin/common/path_to_request_show', s: s
                 %td= customer.created_at.to_s(:simple_date)
