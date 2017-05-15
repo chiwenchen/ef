@@ -35,7 +35,9 @@
   add_new_user: 新增使用者
   control_panel: 功能面板
   upload_images: 上傳圖片
+  add_images: 新增圖片
   upload_attachments: 上傳附件
+  add_attachments: 新增附件
   images: 圖片
   attachments: 附件
   assignment: 人員指派

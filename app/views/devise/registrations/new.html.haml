@@ -6,5 +6,5 @@
       = f.input :username, input_html: {class: 'form-control'}
       = f.input :password, input_html: {class: 'form-control'}
       = f.input :password_confirmation, input_html: {class: 'form-control'}
-      = f.input :role, as: :radio_buttons, collection: [:admin, :sales, :tech, :customer], checked: :sales
+      = f.input :role, as: :radio_buttons, collection: User.available_role_names, checked: :sales
       = f.button :submit, t('sign_up')
