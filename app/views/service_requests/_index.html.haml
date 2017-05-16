@@ -31,5 +31,6 @@
                 %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
                 %td
                   = link_to t('service_request.check_detail'), [role, sr]
-                  - if current_user.customer?
+                  - if current_user.customer? && !sr.close?
                     = link_to t('edit'), edit_customer_service_request_path(sr)
+                    = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE'

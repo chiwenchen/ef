@@ -14,5 +14,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :service_request
   belongs_to :user
+  has_many :comment_documents
+  accepts_nested_attributes_for :comment_documents, reject_if: :all_blank, allow_destroy: true
   validates_presence_of :body
 end

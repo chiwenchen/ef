@@ -27,6 +27,9 @@ en:
     check_detail: Detail
     description: Issue Description
     translate_desc: Issue Description - Auto Translate
+    created: Service request was successfully created.
+    updated: Service request was successfully updated.
+    destroyed: Service request was successfully destroyed.
   admin_list: Administrator List
   sales_list: Sales List
   tech_list: Technicians List
@@ -42,8 +45,17 @@ en:
   cancle: Cancle
   submit: Submit
   edit: Edit
+  delete: Delete
   reply: reply
   no_comments: No comments yet
+  submit_comment: Reply
+  add_comment_documents: Add a New Doc
+  please_wait: 'submitted, please wait'
+  change_to_processing: Take over
+  change_to_complete: Complete
+  close_this_issue: Close Issue
+  reject_and_reprocess: Reject
+  update_assignment: Reassign
   comments:
     title: Comments
     unit: replys

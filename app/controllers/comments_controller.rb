@@ -22,7 +22,9 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, 
+      comment_documents_attributes: [:id, :file_path, :_destroy]
+    )
   end
 
   def auto_change_to_process_if_state_is_initial

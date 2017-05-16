@@ -7,6 +7,8 @@ class Customer::ServiceRequestsController < CustomersController
 
   def show
     @comments = @service_request.comments.order('created_at DESC')
+    @comment = Comment.new
+    @comment.comment_documents.build
   end
 
   def new
@@ -29,7 +31,7 @@ class Customer::ServiceRequestsController < CustomersController
         translate = @service_request.description.to_traditional_chinese
         @service_request.translated_desc = translate
         @service_request.save
-        format.html { redirect_to customer_root_path, notice: 'Service request was successfully created.' }
+        format.html { redirect_to customer_root_path, notice: I18n.t('service_request.created') }
       else
         format.html { render :new }
       end
@@ -42,7 +44,7 @@ class Customer::ServiceRequestsController < CustomersController
         translate = @service_request.description.to_traditional_chinese
         @service_request.translated_desc = translate
         @service_request.save
-        format.html { redirect_to customer_root_path, notice: 'Service request was successfully created.' }
+        format.html { redirect_to customer_root_path, notice: I18n.t('service_request.updated') }
       else
         format.html { render :edit }
       end
@@ -52,8 +54,7 @@ class Customer::ServiceRequestsController < CustomersController
   def destroy
     @service_request.destroy
     respond_to do |format|
-      format.html { redirect_to service_requests_url, notice: 'Service request was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to :back, notice: I18n.t('service_request.destroyed') }
     end
   end
 

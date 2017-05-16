@@ -7,6 +7,8 @@ class Admin::ServiceRequestsController < AdminController
 
   def show
     @comments = @service_request.comments.order('created_at DESC')
+    @comment = Comment.new
+    @comment.comment_documents.build
   end
 
   def change_state

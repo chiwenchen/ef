@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # resources :staffs
   namespace :customer do
     root to: 'service_requests#index'
-    resources :service_requests, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :service_requests do
       member do
         post 'change_state', to: 'service_requests#change_state'
       end
