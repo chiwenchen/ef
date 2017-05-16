@@ -1,0 +1,22 @@
+.row
+  .col-md-6
+    .box
+      .box-body
+        %ul
+          - @categories.each do |category|
+            %li.margin-bottom.category-item
+              中文：
+              .label.label-pill.label-primary= category.tw_title
+              En：
+              .label.label-pill.label-success= category.en_title
+              = link_to icon('remove'), admin_category_path(category), method: 'DELETE'
+.row
+  .col-md-2
+    .box
+      .box-header
+        = t('add_category')
+      .box-body
+        = simple_form_for [:admin, @category] do |f|
+          = f.input :tw_title, input_html: {class: 'form-control'}
+          = f.input :en_title, input_html: {class: 'form-control'}
+          = f.button :submit, t('add_category')

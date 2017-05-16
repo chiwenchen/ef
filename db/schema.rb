@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516030749) do
+ActiveRecord::Schema.define(version: 20170516065133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(version: 20170516030749) do
   end
 
   create_table "categories", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "tw_title"
+    t.string   "en_title"
   end
 
   create_table "comment_documents", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
