@@ -16,3 +16,6 @@ zh-TW:
         processing: 處理中
         complete: 完成，等待結案
         close: 結案
+      category:
+        tw_title: 中文分類名稱
+        en_title: 英文分類名稱

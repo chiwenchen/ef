@@ -30,6 +30,8 @@
     created: 已成功新增客訴單
     updated: 已成功更新客訴單
     destroyed: 已刪除客訴單
+  add_category_success: 分類已新增
+  delete_category_success: 分類已刪除
   admin_list: 管理員名單
   sales_list: 業務人員名單
   tech_list: 技師名單
@@ -58,6 +60,8 @@
   close_this_issue: 結案
   reject_and_reprocess: 駁回
   update_assignment: 重新指派
+  category_list: 分類清單
+  add_category: 新增分類
   comments:
     title: 留言板
     unit: 則

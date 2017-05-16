@@ -30,6 +30,8 @@ en:
     created: Service request was successfully created.
     updated: Service request was successfully updated.
     destroyed: Service request was successfully destroyed.
+  add_category_success: Category was successfully added.
+  delete_category_success: Category was successfully destroyed.
   admin_list: Administrator List
   sales_list: Sales List
   tech_list: Technicians List
@@ -53,9 +55,11 @@ en:
   please_wait: 'submitted, please wait'
   change_to_processing: Take over
   change_to_complete: Complete
-  close_this_issue: Close Issue
+  close_this_issue: Close
   reject_and_reprocess: Reject
   update_assignment: Reassign
+  category_list: Category List
+  add_category: Add Category
   comments:
     title: Comments
     unit: replys
