@@ -6,14 +6,10 @@
       %span.sr-only Toggle navigation
       %ul.nav.navbar-nav
         - if I18n.locale != :'zh-TW'
-          %li= link_to '中文', set_locale_home_index_path(locale: 'zh-TW')
+          %li= link_to '切換至中文', set_locale_home_index_path(locale: 'zh-TW')
         - if I18n.locale != :en
-          %li= link_to 'English', set_locale_home_index_path(locale: :en)
+          %li= link_to 'Switch to English', set_locale_home_index_path(locale: :en)
         - if user_signed_in?
-          - if current_user.admin?
-            %li= link_to t('hello'), new_user_path
-          / - if current_user.sales? || current_user.tech?
-          /   %li= link_to '員工後台', '#'
           %li.dropdown
             %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false")
               = current_user.username

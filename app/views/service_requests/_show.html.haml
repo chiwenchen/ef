@@ -24,7 +24,7 @@
             %tr
               %th= t('service_request.state')
               %th
-                .float-left= @service_request.state
+                .float-left= render 'common/color_state', state: @service_request.state
                 = render '/service_requests/change_state', service_request: @service_request, state: @service_request.state
 .row
   .col-md-6

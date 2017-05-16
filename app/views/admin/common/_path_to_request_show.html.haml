@@ -2,12 +2,4 @@
   = "#{t('service_request.title')}："
   %strong= s.title
   = ", #{t('service_request.state')}："
-  - case s.state
-  - when 'initial'
-    %span.label.label-pill.label-default= ServiceRequest.human_attribute_name(s.state)
-  - when 'processing'
-    %span.label.label-pill.label-primary= ServiceRequest.human_attribute_name(s.state)
-  - when 'complete'
-    %span.label.label-pill.label-warning= ServiceRequest.human_attribute_name(s.state)
-  - when 'close'
-    %span.label.label-pill.label-success= ServiceRequest.human_attribute_name(s.state)
+  = render 'common/color_state', state: s.state
