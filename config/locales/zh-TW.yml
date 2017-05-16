@@ -62,6 +62,10 @@
   update_assignment: 重新指派
   category_list: 分類清單
   add_category: 新增分類
+  sidebar:
+    manage_user: 管理使用者
+    manage_category: 管理分類
+    manage_service_request: 管理客訴單
   comments:
     title: 留言板
     unit: 則

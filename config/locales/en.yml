@@ -60,6 +60,10 @@ en:
   update_assignment: Reassign
   category_list: Category List
   add_category: Add Category
+  sidebar:
+    manage_user: Manage User
+    manage_category: Manage Category
+    manage_service_request: Manage Request
   comments:
     title: Comments
     unit: replys
