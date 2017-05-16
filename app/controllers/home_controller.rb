@@ -3,6 +3,13 @@ class HomeController < ApplicationController
     redirect_if_has_role if current_user
   end
 
+  def set_locale
+    if params[:locale] && I18n.available_locales.include?( params[:locale].to_sym )
+      session[:locale] = params[:locale]
+    end
+    redirect_to :back
+  end
+
   private
 
   def redirect_if_has_role

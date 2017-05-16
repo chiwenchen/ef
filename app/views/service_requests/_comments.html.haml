@@ -2,13 +2,13 @@
   .col-md-10
     .box
       .box-header.with-border
-        Comments
+        = t('comments.title')
       .box-body
         - if comments.present?
           - comments.each do |comment|
             .row
               .col-md-2
-                .name= "#{comment.user.username} 回覆："
+                .name= "#{comment.user.username} #{t('reply')}："
                 .time= comment.created_at.localtime
               .col-md-5
                 .well
@@ -17,4 +17,4 @@
                 .well
                   = comment.translated_body
         - else
-          No comments yet
+          = t('no_comments')

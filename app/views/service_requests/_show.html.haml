@@ -7,56 +7,56 @@
         %table.table.table-bordered
           %tbody
             %tr
-              %th 客戶名
+              %th= t('customer_name')
               %th= @service_request.customer.username
             %tr
-              %th 單號
+              %th= t('service_request.index')
               %th= @service_request.id[0..7]
             %tr
-              %th 標題
+              %th= t('service_request.title')
               %th= @service_request.title
             %tr
-              %th 客訴種類
+              %th= t('service_request.category')
               %th= @service_request.category.title
             %tr
-              %th 期限
+              %th= t('service_request.deadline')
               %th= @service_request.deadline
             %tr
-              %th 狀態
+              %th= t('service_request.state')
               %th
-                .float-left= @service_request.state
+                .float-left= render 'common/color_state', state: @service_request.state
                 = render '/service_requests/change_state', service_request: @service_request, state: @service_request.state
 .row
   .col-md-6
     .box
       .box-header.with-border
-        Service Request Description
+        = t('service_request.description')
       .box-body
         = @service_request.description
   .col-md-6
     .box
       .box-header.with-border
-        Service Request Description - Translated by Google
+        = t('service_request.translate_desc')
       .box-body
         = @service_request.translated_desc
 .row
   .col-md-10
     .box
       .box-header.with-border
-        Assignments
+        = t('assignment')
       .box-body
-        .row
-          - if @service_request.assignments != []
-            - @service_request.assignments.each do |a|
-              .col-md-3
-                .info-box-icon.bg-aqua
-                  %i.fa.fa-user
-                .info-box-content
-                  .username= "姓名: #{a.user.username}"
-                  .role
-                    = "角色: #{a.user.role_list.first}"
-          - else
-            .col-md-3 未指派任何人員
+        / .row
+        /   - if @service_request.assignments != []
+        /     - @service_request.assignments.each do |a|
+        /       .col-md-3
+        /         .info-box-icon.bg-aqua
+        /           %i.fa.fa-user
+        /         .info-box-content
+        /           .username= "姓名: #{a.user.username}"
+        /           .role
+        /             = "角色: #{a.user.role_list.first}"
+        /   - else
+        /     .col-md-3= t('service_request.not_assigned')
         - if current_user.admin?
           %hr
           = '# 警告！ 過度經常的變動會造成工作指派的混亂'
@@ -69,7 +69,7 @@
   .col-md-10
     .box
       .box-header.with-border
-        Photos
+        = t('images')
       .box-body
         - @service_request.images.each do |image|
           = link_to image.file_path.url, target: '_blank' do
@@ -78,7 +78,7 @@
   .col-md-10
     .box
       .box-header.with-border
-        Attachments
+        = t('attachments')
       .box-body
         - @service_request.attachments.each do |attachment|
           = link_to File.basename(attachment.file_path.path), attachment.file_path.url, target: '_blank'

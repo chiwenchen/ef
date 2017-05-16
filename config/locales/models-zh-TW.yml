@@ -1,0 +1,18 @@
+zh-TW:
+  activerecord:
+    attributes:
+      user:
+        username: 姓名
+        sales: 業務
+        password: 密碼
+        password_confirmation: 密碼確認
+        role: 角色
+      service_request:
+        title: 標題
+        category: 分類
+        description: 問題描述
+        deadline: 期限
+        initial: 未處理
+        processing: 處理中
+        complete: 完成，等待結案
+        close: 結案

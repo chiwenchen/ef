@@ -9,15 +9,15 @@
         %table.table.table-bordered
           %thead
             %tr
-              %th 單號
-              %th 客戶名稱
-              %th 標題
-              %th 客訴種類
-              %th 期限
-              %th 狀態
-              %th 指派人員數
-              %th 留言回覆數
-              %th 操作
+              %th= t('service_request.index')
+              %th= t('service_request.customer_name')
+              %th= t('service_request.title')
+              %th= t('service_request.category')
+              %th= t('service_request.deadline')
+              %th= t('service_request.state')
+              %th= t('service_request.assign_amount')
+              %th= t('service_request.comments_amount')
+              %th= t('service_request.operation')
           %tbody
             - service_requests.each do |sr|
               %tr
@@ -26,10 +26,10 @@
                 %td= sr.title
                 %td= sr.category.title
                 %td= sr.deadline
-                %td= sr.state
-                %td= sr.assignments.blank? ? '未指派人員' : sr.assignments.count
-                %td= sr.comments.blank? ? '無留言' : "#{sr.comments.count} 則"
+                %td= render 'common/color_state', state: sr.state
+                %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
+                %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
                 %td
-                  = link_to '查看細節', [role, sr]
+                  = link_to t('service_request.check_detail'), [role, sr]
                   - if current_user.customer?
-                    = link_to '修改', edit_customer_service_request_path(sr)
+                    = link_to t('edit'), edit_customer_service_request_path(sr)

@@ -1,0 +1,9 @@
+- case state
+- when 'initial'
+  %span.label.label-pill.label-default= ServiceRequest.human_attribute_name(state)
+- when 'processing'
+  %span.label.label-pill.label-primary= ServiceRequest.human_attribute_name(state)
+- when 'complete'
+  %span.label.label-pill.label-warning= ServiceRequest.human_attribute_name(state)
+- when 'close'
+  %span.label.label-pill.label-success= ServiceRequest.human_attribute_name(state)

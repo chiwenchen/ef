@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :home do
     collection do
       get 'landing', to: 'home#landing'
+      get 'set_locale', to: 'home#set_locale'
     end
   end
 

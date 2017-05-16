@@ -2,15 +2,15 @@
   .col-md-12
     .box
       .box-header.with-border 
-        %strong 客戶名單
+        %strong= t('customer_list')
       .box-body
         %table.table.table-bordered
           %thead
             %tr
-              %th 姓名
-              %th 客訴單數量
-              %th 客訴單
-              %th 註冊日期
+              %th= t('name')
+              %th= t('requests_amount')
+              %th= t('requests')
+              %th= t('register_date')
           %tbody
             - @customers.each do |customer|
               %tr
@@ -19,6 +19,5 @@
                 %td
                   %ul.nav.nav-stacked
                     - customer.service_requests.each do |s|
-                      %li
-                        = link_to "客訴單標題： #{s.title}, 狀態：#{s.state}", admin_service_request_path(s)
+                      %li= render 'admin/common/path_to_request_show', s: s
                 %td= customer.created_at.to_s(:simple_date)
