@@ -20,7 +20,7 @@
           = link_to_add_association f, :attachments do
             .btn.btn-primary.btn-sm= t('add_attachments')
       .action
-        = f.button :submit, t('submit')
+        = f.button :submit, t('submit'), data: { disable_with: t('please_wait') }
         = link_to t('cancle'), customer_root_path, class: 'btn btn-default'
 
 - content_for :javascripts do

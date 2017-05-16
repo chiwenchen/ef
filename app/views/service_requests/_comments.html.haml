@@ -16,5 +16,12 @@
               .col-md-5
                 .well
                   = comment.translated_body
+            - if comment.comment_documents.present?
+              .row
+                .col-md-10.col-md-offset-2
+                  - comment.comment_documents.each do |document|
+                    = link_to File.basename(document.file_path.path), document.file_path.url, target: '_blank'
+            %hr
+
         - else
           = t('no_comments')

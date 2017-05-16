@@ -27,6 +27,9 @@
     check_detail: 查看細節
     description: 問題描述
     translate_desc: 問題描述 - 翻譯
+    created: 已成功新增客訴單
+    updated: 已成功更新客訴單
+    destroyed: 已刪除客訴單
   admin_list: 管理員名單
   sales_list: 業務人員名單
   tech_list: 技師名單
@@ -44,8 +47,17 @@
   cancle: 取消
   submit: 送出
   edit: 編輯
+  delete: 刪除
   reply: 回覆
   no_comments: 無留言
+  submit_comment: 回覆
+  add_comment_documents: 新增一個新的檔案
+  please_wait: 已送出，請稍待
+  change_to_processing: 開始處理
+  change_to_complete: 處理完成
+  close_this_issue: 結案
+  reject_and_reprocess: 駁回
+  update_assignment: 重新指派
   comments:
     title: 留言板
     unit: 則
