@@ -16,6 +16,7 @@
     state: 狀態
     add: 新增客訴單
     index: 單號
+    equipment_id: 設備編號
     customer_name: 客戶名稱
     category: 客訴種類
     deadline: 期限
@@ -32,12 +33,14 @@
     destroyed: 已刪除客訴單
   add_category_success: 分類已新增
   delete_category_success: 分類已刪除
+  delete_confirm: 確定要刪除嗎?
   admin_list: 管理員名單
   sales_list: 業務人員名單
   tech_list: 技師名單
   customer_list: 客戶名單
-  staffs_list: 員工清單
+  staffs_list: 員工名單
   add_new_user: 新增使用者
+  add_new_user_success: "已成功新增使用者 %{name}"
   control_panel: 功能面板
   upload_images: 上傳圖片
   add_images: 新增圖片
@@ -51,6 +54,7 @@
   edit: 編輯
   delete: 刪除
   reply: 回覆
+  to_main_page: 回主畫面
   no_comments: 無留言
   submit_comment: 回覆
   add_comment_documents: 新增一個新的檔案

@@ -70,7 +70,7 @@ class Customer::ServiceRequestsController < CustomersController
     end
 
     def service_request_params
-      params.require(:service_request).permit(:title, :category_id, :description, :deadline,
+      params.require(:service_request).permit(:title, :category_id, :description, :deadline, :equipment_id,
         images_attributes: [:id, :file_path, :_destroy], 
         attachments_attributes: [:id, :file_path, :_destroy]
       )

@@ -7,7 +7,7 @@
         %li.header=  t('sidebar.manage_service_request')
         %li= link_to "#{t('requests_list')}", admin_root_path
         %li.header=  t('sidebar.manage_user')
-        %li= link_to "#{t('add_new_user')}", new_user_path
+        %li= link_to "#{t('add_new_user')}", new_admin_user_path
         %li= link_to "#{t('staffs_list')}", admin_staffs_path
         %li= link_to "#{t('customer_list')}", admin_customers_path
       - if current_user.sales? or current_user.tech?

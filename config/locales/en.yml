@@ -16,6 +16,7 @@ en:
     state: State
     add: Create Request
     index: No.
+    equipment_id: 'Equipment Number'
     customer_name: Customer Name
     category: Category
     deadline: Deadline
@@ -32,12 +33,14 @@ en:
     destroyed: Service request was successfully destroyed.
   add_category_success: Category was successfully added.
   delete_category_success: Category was successfully destroyed.
+  delete_confirm: Are you sure delete this record?
   admin_list: Administrator List
   sales_list: Sales List
   tech_list: Technicians List
   customer_list: Customers List
   staffs_list: Staffs List
   add_new_user: Add User
+  add_new_user_success: "User %{name} was successfully added"
   control_panel: Control Panel
   upload_images: Upload Images
   upload_attachments: Upload Attachments
@@ -49,6 +52,7 @@ en:
   edit: Edit
   delete: Delete
   reply: reply
+  to_main_page: To Main Page
   no_comments: No comments yet
   submit_comment: Reply
   add_comment_documents: Add a New Doc

@@ -24,6 +24,7 @@ class Admin::ServiceRequestsController < AdminController
         Assignment.create(user_id: responsible, service_request: @service_request)
       end
     end
+    @service_request.process! if @service_request.initial?
     flash[:notice] = 'Assignment update successfully'
     redirect_to admin_service_request_path(@service_request)
   end
