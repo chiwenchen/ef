@@ -13,6 +13,7 @@
 #  updated_at      :datetime         not null
 #  state           :string
 #  translated_desc :text
+#  equipment_id    :string
 #
 
 require 'rails_helper'

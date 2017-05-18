@@ -2,6 +2,7 @@
   .col-sm-5.col-sm-offset-1
     = simple_form_for [:customer, service_request] do |f|
       = f.input :title, input_html: {class: 'form-control'}, required: true
+      = f.input :equipment_id, input_html: {class: 'form-control'}, required: true
       = f.association :category, include_hidden: false, include_blank: false, input_html: {class: 'form-control'}
       = f.input :description,as: :text, input_html: {class: 'form-control', rows: 10}, required: true
       = f.input :deadline, as: :date_time_picker, input_html: {class: 'form-control col-md-3 datepicker'}, required: true

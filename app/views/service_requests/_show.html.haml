@@ -13,6 +13,9 @@
               %th= t('service_request.index')
               %th= @service_request.id[0..7]
             %tr
+              %th= t('service_request.equipment_id')
+              %th= @service_request.equipment_id
+            %tr
               %th= t('service_request.title')
               %th= @service_request.title
             %tr
@@ -45,26 +48,26 @@
       .box-header.with-border
         = t('assignment')
       .box-body
-        / .row
-        /   - if @service_request.assignments != []
-        /     - @service_request.assignments.each do |a|
-        /       .col-md-3
-        /         .info-box-icon.bg-aqua
-        /           %i.fa.fa-user
-        /         .info-box-content
-        /           .username= "姓名: #{a.user.username}"
-        /           .role
-        /             = "角色: #{a.user.role_list.first}"
-        /   - else
-        /     .col-md-3= t('service_request.not_assigned')
         - if current_user.admin?
-          %hr
           = '# 警告！ 過度經常的變動會造成工作指派的混亂'
           .row
             .col-md-12.assignment-form
               = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
                 = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
                 = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait') }
+        - else
+          .row
+            - if @service_request.assignments != []
+              - @service_request.assignments.each do |a|
+                .col-md-3
+                  .info-box-icon.bg-aqua
+                    %i.fa.fa-user
+                  .info-box-content
+                    .username= "姓名: #{a.user.username}"
+                    .role
+                      = "角色: #{a.user.role_list.first}"
+            - else
+              .col-md-3= t('service_request.not_assigned')
 .row
   .col-md-10
     .box
