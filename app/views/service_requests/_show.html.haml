@@ -49,7 +49,6 @@
         = t('assignment')
       .box-body
         - if current_user.admin?
-          = '# 警告！ 過度經常的變動會造成工作指派的混亂'
           .row
             .col-md-12.assignment-form
               = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|

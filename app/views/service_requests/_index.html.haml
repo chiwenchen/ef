@@ -11,8 +11,9 @@
             %tr
               %th= t('service_request.index')
               %th= t('service_request.customer_name')
+              %th= t('service_request.equipment_id')
               %th= t('service_request.title')
-              %th= t('service_request.category')
+              / %th= t('service_request.category')
               %th= t('service_request.deadline')
               %th= t('service_request.state')
               %th= t('service_request.assign_amount')
@@ -23,8 +24,9 @@
               %tr
                 %td= sr.id[0..7]
                 %td= sr.customer.username
+                %td= sr.equipment_id
                 %td= sr.title
-                %td= sr.category.title
+                / %td= sr.category.title
                 %td= sr.deadline
                 %td= render 'common/color_state', state: sr.state
                 %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
