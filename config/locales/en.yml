@@ -10,6 +10,11 @@ en:
   requests_amount: Request Amount
   requests: Service Requsts
   requests_list: Requests List
+  all_requests_list: All
+  initial_requests_list: Initial
+  processing_requests_list: Processing
+  complete_requests_list: Complete
+  close_requests_list: Close
   register_date: Register Date
   service_request:
     title: Title
@@ -32,6 +37,7 @@ en:
     updated: Service request was successfully updated.
     destroyed: Service request was successfully destroyed.
   add_category_success: Category was successfully added.
+  confirm_assignment: Are you sure change this assignment?
   delete_category_success: Category was successfully destroyed.
   delete_confirm: Are you sure delete this record?
   admin_list: Administrator List
@@ -64,6 +70,8 @@ en:
   update_assignment: Reassign
   category_list: Category List
   add_category: Add Category
+  overdue_after_days: "Overdue after %{days} days"
+  overdue: Overdue
   sidebar:
     manage_user: Manage User
     manage_category: Manage Category

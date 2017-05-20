@@ -9,6 +9,8 @@
               .label.label-pill.label-primary= category.tw_title
               En：
               .label.label-pill.label-success= category.en_title
+              備註：
+              = category.note
               = link_to icon('remove'), admin_category_path(category), method: 'DELETE'
 .row
   .col-md-2
@@ -19,4 +21,5 @@
         = simple_form_for [:admin, @category] do |f|
           = f.input :tw_title, input_html: {class: 'form-control'}
           = f.input :en_title, input_html: {class: 'form-control'}
+          = f.input :note, input_html: {class: 'form-control'}
           = f.button :submit, t('add_category')

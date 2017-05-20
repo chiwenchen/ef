@@ -10,6 +10,11 @@
   requests_amount: 客訴單數量
   requests: 客訴單
   requests_list: 客訴單清單
+  all_requests_list: 全部
+  initial_requests_list: 未指派
+  processing_requests_list: 處理中
+  complete_requests_list: 已完成
+  close_requests_list: 已結案
   register_date: 註冊日期
   service_request:
     title: 標題
@@ -41,6 +46,7 @@
   staffs_list: 員工名單
   add_new_user: 新增使用者
   add_new_user_success: "已成功新增使用者 %{name}"
+  confirm_assignment: 你確定修改指派人員?
   control_panel: 功能面板
   upload_images: 上傳圖片
   add_images: 新增圖片
@@ -66,10 +72,12 @@
   update_assignment: 重新指派
   category_list: 分類清單
   add_category: 新增分類
+  overdue_after_days: "再%{days}天到期"
+  overdue: 已超過處理期限
   sidebar:
-    manage_user: 管理使用者
-    manage_category: 管理分類
-    manage_service_request: 管理客訴單
+    manage_user: 使用者管理
+    manage_category: 分類管理
+    manage_service_request: 客訴單管理
   comments:
     title: 留言板
     unit: 則

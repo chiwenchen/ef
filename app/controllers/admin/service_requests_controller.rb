@@ -2,7 +2,11 @@ class Admin::ServiceRequestsController < AdminController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
-    @service_requests = ServiceRequest.all
+    if params[:state].present?
+      @service_requests = ServiceRequest.where(state: params[:state])
+    else
+      @service_requests = ServiceRequest.all
+    end
   end
 
   def show

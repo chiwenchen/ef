@@ -7,6 +7,7 @@
 #  updated_at :datetime         not null
 #  tw_title   :string
 #  en_title   :string
+#  note       :string
 #
 
 Fabricator(:category) do

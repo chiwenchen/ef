@@ -27,9 +27,10 @@ class Customer::ServiceRequestsController < CustomersController
     respond_to do |format|
       if @service_request.valid?
         @service_request.customer = current_user
-        @service_request.deadline = Date.strptime(service_request_params[:deadline], '%m/%d/%Y')
+        # @service_request.deadline = Date.strptime(service_request_params[:deadline], '%m/%d/%Y')
         translate = @service_request.description.to_traditional_chinese
         @service_request.translated_desc = translate
+        @service_request.deadline = Date.today + 7.days
         @service_request.save
         format.html { redirect_to customer_root_path, notice: I18n.t('service_request.created') }
       else
@@ -70,7 +71,7 @@ class Customer::ServiceRequestsController < CustomersController
     end
 
     def service_request_params
-      params.require(:service_request).permit(:title, :category_id, :description, :deadline, :equipment_id,
+      params.require(:service_request).permit(:title, :category_id, :description, :equipment_id,
         images_attributes: [:id, :file_path, :_destroy], 
         attachments_attributes: [:id, :file_path, :_destroy]
       )

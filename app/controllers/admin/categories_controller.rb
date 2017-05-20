@@ -27,6 +27,6 @@ class Admin::CategoriesController < AdminController
   private
 
   def category_params
-    params.require(:category).permit(:tw_title, :en_title)
+    params.require(:category).permit(:tw_title, :en_title, :note)
   end
 end

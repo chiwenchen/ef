@@ -27,7 +27,13 @@
                 %td= sr.equipment_id
                 %td= sr.title
                 / %td= sr.category.title
-                %td= sr.deadline
+                %td
+                  - if sr.close? or sr.complete?
+                    = "-"
+                  - elsif sr.deadline >= Date.today
+                    = t('overdue_after_days', days: sr.deadline.mjd - Date.today.mjd)
+                  - else
+                    = t('overdue')
                 %td= render 'common/color_state', state: sr.state
                 %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
                 %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"

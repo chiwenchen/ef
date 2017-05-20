@@ -48,12 +48,12 @@
       .box-header.with-border
         = t('assignment')
       .box-body
-        - if current_user.admin?
+        - if current_user.admin? and !@service_request.close?
           .row
             .col-md-12.assignment-form
               = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
                 = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
-                = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait') }
+                = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait'), confirm: t('confirm_assignment') }
         - else
           .row
             - if @service_request.assignments != []

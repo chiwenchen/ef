@@ -4,6 +4,7 @@ zh-TW:
       user:
         username: 姓名
         sales: 業務
+        email: 信箱
         password: 密碼
         password_confirmation: 密碼確認
         role: 角色
