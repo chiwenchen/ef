@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
     if @user.valid?
       @user.save
       @user.add_role params[:user][:role]
+      @user.send_reset_password_instructions
       # sign_out current_user
       # sign_in @user
       flash[:notice] = t('add_new_user_success', name: @user.username)
