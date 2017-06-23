@@ -14,10 +14,10 @@
         %li.item= link_to "#{t('add_new_user')}", new_admin_user_path
         %li.item= link_to "#{t('staffs_list')}", admin_staffs_path
         %li.item= link_to "#{t('customer_list')}", admin_customers_path
-        %li.header 客訴單分析
-        %li.item.disabled= link_to "依客戶", '#'
-        %li.item.disabled= link_to "依問題分類", '#'
-        %li.item.disabled= link_to "依員工", '#'
+        / %li.header 客訴單分析
+        / %li.item.disabled= link_to "依客戶", '#'
+        / %li.item.disabled= link_to "依問題分類", '#'
+        / %li.item.disabled= link_to "依員工", '#'
       - if current_user.sales? or current_user.tech?
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('requests_list')}", staff_root_path
@@ -25,6 +25,6 @@
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('service_request.add')}", new_customer_service_request_path
         %li.item= link_to "#{t('requests_list')}", customer_root_path
-      %li.header 客訴單查詢
-      %li.item.disabled= link_to "依客戶", '#'
-      %li.item.disabled= link_to "依問題分類", '#'
+      / %li.header 客訴單查詢
+      / %li.item.disabled= link_to "依客戶", '#'
+      / %li.item.disabled= link_to "依問題分類", '#'
