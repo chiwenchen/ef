@@ -52,6 +52,9 @@ gem 'html2haml'
 gem 'easy_translate'
 gem 'to_lang'
 
+#line
+gem 'line-bot-api'
+
 
 group :development do
   gem 'web-console', '~> 2.0'
