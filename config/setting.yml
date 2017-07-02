@@ -1,5 +1,5 @@
 defaults: &defaults
-  domain: 'localhost:3000'
+  domain: 'localhost:5000'
   url: http://beside-you.dev
   email_sender: 'service@zaidei.com'
   AWS_ACCESS_KEY_ID: 'AKIAIZBEU3XMIK7PLTWQ'
@@ -16,8 +16,7 @@ defaults: &defaults
   google_translate_api_key: AIzaSyAIj30NFue1x2UJpfT58qiK89uIJIk0xng
 development:
   <<: *defaults
-  url: http://localhost:3000
-  app_name: '[DEVELOPMENT] beside-you'
+  url: http://localhost:5000
   meta_tags:
     title: 'development-title'
     description: 'development-description'

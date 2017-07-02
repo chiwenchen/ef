@@ -28,6 +28,9 @@ class Admin::ServiceRequestsController < AdminController
         Assignment.create(user_id: responsible, service_request: @service_request)
       end
     end
+    @service_request.responsibles.each do |user|
+      AssignmentNotifyMailer.notify(user, @service_request).deliver_now
+    end
     @service_request.process! if @service_request.initial?
     flash[:notice] = 'Assignment update successfully'
     redirect_to admin_service_request_path(@service_request)
