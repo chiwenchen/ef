@@ -3,7 +3,6 @@
 #   # before_action :is_admin?, only: [:new, :create]
 
 #   def new
-#     binding.pry
 #     super
 #   end
 

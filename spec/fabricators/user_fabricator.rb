@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
+#  line_user_id           :string
 #
 
 Fabricator(:user) do

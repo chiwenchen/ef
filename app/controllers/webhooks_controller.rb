@@ -3,7 +3,7 @@ class WebhooksController < ActionController::Base
     @line_user_id = params[:events][0][:source][:userId]
     @text = params[:events][0][:message][:text]
 
-    verify_user(text)
+    verify_user
 
     render text: '202'
   end
@@ -11,7 +11,7 @@ class WebhooksController < ActionController::Base
   private
 
   def verify_user
-    if (@text =~ /!驗證 /) == 0 || (@text =~ /！驗證 /) == 0
+    if (@text =~ /!驗證 /) == 0
       parse_text(@text)
       user = User.find_by_email(@email)
       if user

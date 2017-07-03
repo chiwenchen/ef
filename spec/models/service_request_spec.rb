@@ -14,6 +14,7 @@
 #  state           :string
 #  translated_desc :text
 #  equipment_id    :string
+#  used_lang       :string
 #
 
 require 'rails_helper'
