@@ -44,8 +44,11 @@ Rails.application.routes.draw do
         post 'update_assignment', to: 'service_requests#update_assignment'
       end
     end
+    get 'admin_index', to: 'staffs#admin_index'
+    get 'sales_index', to: 'staffs#sales_index'
+    get 'techs_index', to: 'staffs#techs_index'
     resources :categories, except: [:show, :edit, :update]
-    resources :staffs, only: [:index, :show]
+    resources :staffs, only: [:show]
     resources :customers, only: [:index, :show]
     resources :users, only: [:new, :create]
   end

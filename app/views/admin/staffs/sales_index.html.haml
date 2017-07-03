@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong= t('sales_list')
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th= t('name')
+              %th= t('requests_amount')
+              %th= t('requests')
+              %th= t('register_date')
+          %tbody
+            - @sales.each do |sales|
+              %tr
+                %td= sales.username
+                %td= sales.assigned_service_requests.count
+                %td
+                  %ul.nav.nav-stacked
+                    - sales.assigned_service_requests.each do |s|
+                      %li= render 'admin/common/path_to_request_show', s: s
+                %td= sales.created_at.to_s(:simple_date)

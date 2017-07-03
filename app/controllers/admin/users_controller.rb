@@ -1,7 +1,7 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
 
   def new
-    render 'devise/registrations/new'
+    
   end
 
   def create

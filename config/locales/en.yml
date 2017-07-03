@@ -5,11 +5,11 @@ en:
   sign_up: Sign Up
   username: User Name
   password: Password
-  service_system: Service System
+  service_system: Claim Service System
   name: Name
-  requests_amount: Request Amount
+  requests_amount: Claim Amount
   requests: Service Requsts
-  requests_list: Requests List
+  requests_list: Claims List
   all_requests_list: All
   initial_requests_list: Initial
   processing_requests_list: Processing
@@ -19,7 +19,7 @@ en:
   service_request:
     title: Title
     state: State
-    add: Create Request
+    add: New Claim
     index: No.
     equipment_id: 'Equipment Number'
     customer_name: Customer Name
@@ -30,12 +30,12 @@ en:
     operation: Operate
     not_assigned: Not assigned
     no_comments: No comments
-    check_detail: Detail
+    reply: Reply
     description: Issue Description
     translate_desc: Issue Description - Auto Translate
-    created: Service request was successfully created.
-    updated: Service request was successfully updated.
-    destroyed: Service request was successfully destroyed.
+    created: Claim was successfully created.
+    updated: Claim was successfully updated.
+    destroyed: Claim was successfully destroyed.
   add_category_success: Category was successfully added.
   confirm_assignment: Are you sure change this assignment?
   delete_category_success: Category was successfully destroyed.
@@ -48,7 +48,7 @@ en:
   add_new_user: Add User
   add_new_user_success: "User %{name} was successfully added"
   control_panel: Control Panel
-  upload_images: Upload Images
+  upload_images: Upload Images/Videos
   upload_attachments: Upload Attachments
   images: Images
   attachments: Attachments
@@ -67,15 +67,19 @@ en:
   change_to_complete: Complete
   close_this_issue: Close
   reject_and_reprocess: Reject
-  update_assignment: Reassign
+  update_assignment: Assign
   category_list: Category List
   add_category: Add Category
   overdue_after_days: "Overdue after %{days} days"
   overdue: Overdue
   sidebar:
     manage_user: Manage User
-    manage_category: Manage Category
-    manage_service_request: Manage Request
+    background_management: Administration
+    manage_service_request: Claim
   comments:
     title: Comments
     unit: replys
+  chinese: Chinese
+  english: English
+  note: Note
+  operation: Operation

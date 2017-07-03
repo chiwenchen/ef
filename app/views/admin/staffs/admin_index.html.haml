@@ -1,0 +1,16 @@
+.row
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong= t('admin_list')
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th= t('name')
+              %th= t('register_date')
+          %tbody
+            - @admins.each do |admin|
+              %tr
+                %td= admin.username
+                %td= admin.created_at.to_s(:simple_date)

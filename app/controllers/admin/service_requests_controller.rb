@@ -3,9 +3,9 @@ class Admin::ServiceRequestsController < AdminController
 
   def index
     if params[:state].present?
-      @service_requests = ServiceRequest.where(state: params[:state])
+      @service_requests = ServiceRequest.where(state: params[:state]).order('created_at DESC')
     else
-      @service_requests = ServiceRequest.all
+      @service_requests = ServiceRequest.all.order('created_at DESC')
     end
   end
 

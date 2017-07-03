@@ -1,25 +1,33 @@
 .row
   .col-md-6
     .box
+      .box-header.with-border 
+        %strong= t('category_list')
       .box-body
-        %ul
-          - @categories.each do |category|
-            %li.margin-bottom.category-item
-              中文：
-              .label.label-pill.label-primary= category.tw_title
-              En：
-              .label.label-pill.label-success= category.en_title
-              備註：
-              = category.note
-              = link_to icon('remove'), admin_category_path(category), method: 'DELETE'
+        %table.table.table-bordered
+          %thead
+            %th= t('chinese')
+            %th= t('english')
+            %th= t('note')
+            %th= t('operattion')
+          %tbody
+            - @categories.each do |category|
+              %tr
+                %td= category.tw_title
+                %td= category.en_title
+                %td= category.note
+                %td= link_to t('delete'), admin_category_path(category), method: 'DELETE'
 .row
-  .col-md-2
+  .col-md-6
     .box
       .box-header
-        = t('add_category')
+        %strong= t('add_category')
       .box-body
         = simple_form_for [:admin, @category] do |f|
-          = f.input :tw_title, input_html: {class: 'form-control'}
-          = f.input :en_title, input_html: {class: 'form-control'}
-          = f.input :note, input_html: {class: 'form-control'}
-          = f.button :submit, t('add_category')
+          .row
+            .col-md-6= f.input :tw_title, input_html: {class: 'form-control'}
+            .col-md-6= f.input :en_title, input_html: {class: 'form-control'}
+          .row
+            .col-md-12= f.input :note, input_html: {class: 'form-control'}
+          .row
+            .col-md-4= f.button :submit, t('add_category')

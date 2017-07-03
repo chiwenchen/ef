@@ -2,17 +2,18 @@
   .sidebar
     %ul.nav.sidebar-menu
       - if current_user.admin?
-        %li.header=  t('sidebar.manage_category')
-        %li.item= link_to "#{t('category_list')}", admin_categories_path
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('all_requests_list')}", admin_root_path
         %li.item= link_to "#{t('initial_requests_list')}", admin_root_path(state: 'initial')
         %li.item= link_to "#{t('processing_requests_list')}", admin_root_path(state: 'processing')
         %li.item= link_to "#{t('complete_requests_list')}", admin_root_path(state: 'complete')
         %li.item= link_to "#{t('close_requests_list')}", admin_root_path(state: 'close')
-        %li.header=  t('sidebar.manage_user')
+        %li.header=  t('sidebar.background_management')
         %li.item= link_to "#{t('add_new_user')}", new_admin_user_path
-        %li.item= link_to "#{t('staffs_list')}", admin_staffs_path
+        %li.item= link_to "#{t('category_list')}", admin_categories_path
+        %li.item= link_to "#{t('admin_list')}", admin_admin_index_path
+        %li.item= link_to "#{t('sales_list')}", admin_sales_index_path
+        %li.item= link_to "#{t('tech_list')}", admin_techs_index_path
         %li.item= link_to "#{t('customer_list')}", admin_customers_path
         / %li.header 客訴單分析
         / %li.item.disabled= link_to "依客戶", '#'
