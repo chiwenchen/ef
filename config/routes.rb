@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :webhooks, only: [] do
+    collection do
+      post 'line', to: 'webhooks#line'
+    end
+  end
   devise_for :users
   
   devise_scope :user do

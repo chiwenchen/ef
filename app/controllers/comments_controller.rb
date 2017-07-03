@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     )
     
     auto_change_to_process_if_state_is_initial
-    message_translate(@comment.body)
+    message_translate(@comment.body, @service_request.used_lang)
 
     if current_user.admin?
       redirect_to admin_service_request_path(@service_request)
@@ -31,11 +31,11 @@ class CommentsController < ApplicationController
     @service_request.process! if @service_request.initial?
   end
 
-  def message_translate(origin_msg)
-    if EasyTranslate.detect(origin_msg) == 'zh-CN' || EasyTranslate.detect(origin_msg) == 'zh-TW'
-      @comment.update_column(:translated_body, EasyTranslate.translate(origin_msg, to: 'en'))
-    else
+  def message_translate(origin_msg, used_lang)
+    if EasyTranslate.detect(origin_msg) == used_lang
       @comment.update_column(:translated_body, EasyTranslate.translate(origin_msg, to: 'zh-TW'))
+    else
+      @comment.update_column(:translated_body, EasyTranslate.translate(origin_msg, to: used_lang))
     end
   end
 end

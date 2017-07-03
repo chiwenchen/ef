@@ -30,6 +30,10 @@ class Admin::ServiceRequestsController < AdminController
     end
     @service_request.responsibles.each do |user|
       AssignmentNotifyMailer.notify(user, @service_request).deliver_now
+      if user.line_user_id.present?
+        text = "您已經被指派一個客訴單，請前往系統查看"
+        LineService.send(user.line_user_id, text)
+      end
     end
     @service_request.process! if @service_request.initial?
     flash[:notice] = 'Assignment update successfully'

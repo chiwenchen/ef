@@ -30,8 +30,15 @@ class Customer::ServiceRequestsController < CustomersController
         # @service_request.deadline = Date.strptime(service_request_params[:deadline], '%m/%d/%Y')
         translate = @service_request.description.to_traditional_chinese
         @service_request.translated_desc = translate
+
+        used_lang = EasyTranslate.detect @service_request.description
+        @service_request.used_lang = used_lang
+
         @service_request.deadline = Date.today + 7.days
         @service_request.save
+        User.admins.each do |admin|
+          LineService.send(admin.line_user_id, "客戶 #{current_user.username} 新增一筆客訴單，請前往系統指派人員。")
+        end
         format.html { redirect_to customer_root_path, notice: I18n.t('service_request.created') }
       else
         format.html { render :new }

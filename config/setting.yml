@@ -14,6 +14,10 @@ defaults: &defaults
   twilio_number: "+19376883888"
   sms_send_interval: 60
   google_translate_api_key: AIzaSyAIj30NFue1x2UJpfT58qiK89uIJIk0xng
+  line_user_id: U1ee6837aa21f5b5360b01d63b7979fcb
+  line_channel_id:  1521523301
+  line_channel_secret: bf982adace8d8dce3f63f6bb63cbdb12
+  line_channel_access_token: wp3z4/lvYB3occ7O8X1QZ2iLk9LMX3L4esDVH1lpt10Aa+Hr4SXjnffSo5y+9cuPsUG13SnZxiwZaUi3NCOWu5iIJypDkgjfG11IPIeSNlJjykfbHxEZuvXD9ldHtt8qHDJ0gXTBCzEd1R7r2xIz3wdB04t89/1O/w1cDnyilFU=
 development:
   <<: *defaults
   url: http://localhost:5000
