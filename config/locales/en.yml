@@ -36,6 +36,7 @@ en:
     created: Claim was successfully created.
     updated: Claim was successfully updated.
     destroyed: Claim was successfully destroyed.
+    basic_info: Claim Basic Information
   add_category_success: Category was successfully added.
   confirm_assignment: Are you sure change this assignment?
   delete_category_success: Category was successfully destroyed.

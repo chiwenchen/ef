@@ -2,7 +2,10 @@
   .col-md-6
     .box
       .box-header.with-border
-        Service Request Basic Info
+        %h3.box-title= t('service_request.basic_info')
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{data:{widget: 'collapse'}}
+            %i.fa.fa-minus
       .box-body
         %table.table.table-bordered
           %tbody
@@ -34,6 +37,7 @@
     .box
       .box-header.with-border
         = t('service_request.description')
+        = "(#{@service_request.used_lang})"
       .box-body
         = @service_request.description
   .col-md-6
@@ -46,7 +50,10 @@
   .col-md-12
     .box
       .box-header.with-border
-        = t('assignment')
+        %h3.box-title= t('assignment')
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{data:{widget: 'collapse'}}
+            %i.fa.fa-minus
       .box-body
         - if current_user.admin? and !@service_request.close?
           .row
