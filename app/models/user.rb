@@ -17,6 +17,9 @@
 #  updated_at             :datetime         not null
 #  username               :string
 #  line_user_id           :string
+#  owner_id               :uuid
+#  sales_id               :uuid
+#  tech_id                :uuid
 #
 
 class User < ActiveRecord::Base
@@ -27,6 +30,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :assignments
   has_many :assigned_service_requests, through: :assignments, source: :service_request
+
+  belongs_to :owner, class_name: 'User'
+  has_one :user, class_name: 'User', foreign_key: 'owner_id'
 
   validates_uniqueness_of :username
 
