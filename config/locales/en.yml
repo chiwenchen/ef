@@ -84,3 +84,7 @@ en:
   english: English
   note: Note
   operation: Operation
+  error:
+    invalid_equipment_id: Equipment Id Invalid
+  placeholder:
+    equipment_id: 'please enter EF-xxxx, example: EF-1234'

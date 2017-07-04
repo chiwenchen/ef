@@ -86,3 +86,7 @@
   english: 英文
   note: 備註
   operation: 操作
+  error:
+    invalid_equipment_id: 設備編號格式錯誤
+  placeholder:
+    equipment_id: '請輸入 EF-xxxx, 例如 EF-1234'
