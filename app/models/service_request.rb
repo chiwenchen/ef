@@ -30,6 +30,10 @@ class ServiceRequest < ActiveRecord::Base
   has_many :responsibles, through: :assignments, source: :user
   accepts_nested_attributes_for :assignments, reject_if: :all_blank, allow_destroy: true
 
+  before_create :generate_request_id
+
+  validate :equipment_id_validation
+
   extend Enumerize
   enumerize :state, in: [:initial, :processing, :complete, :close], default: :initial
 
@@ -58,4 +62,19 @@ class ServiceRequest < ActiveRecord::Base
     end
   end
 
+  def generate_request_id
+    year = Time.current.year.to_s[2,3]
+    request_id = (year + '001').to_i
+    loop do
+      break unless self.class.find_by(request_id: request_id)
+      request_id += 1
+    end
+    return self.request_id = request_id
+  end
+
+  def equipment_id_validation
+    unless /EF-\d\d\d\d\b/ =~ self.equipment_id || self.equipment_id == ""
+      errors.add(:equipment_id, I18n.t('error.invalid_equipment_id'))
+    end
+  end
 end

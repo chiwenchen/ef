@@ -84,3 +84,5 @@ en:
   english: English
   note: Note
   operation: Operation
+  error:
+    invalid_equipment_id: Equipment Id Invalid
