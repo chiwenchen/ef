@@ -54,5 +54,9 @@ class User < ActiveRecord::Base
     false
   end
 
+  def responsibles
+    [self.owner, self.sales, self.tech].delete_if {|obj| obj == nil }
+  end
+
   royce_roles [ :admin, :sales, :tech, :customer ]
 end
