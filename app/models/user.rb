@@ -34,6 +34,12 @@ class User < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_one :user, class_name: 'User', foreign_key: 'owner_id'
 
+  belongs_to :sales, class_name: 'User'
+  has_one :user, class_name: 'User', foreign_key: 'sales_id'
+
+  belongs_to :tech, class_name: 'User'
+  has_one :user, class_name: 'User', foreign_key: 'tech_id'
+
   validates_uniqueness_of :username
 
   attr_accessor :role

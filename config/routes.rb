@@ -55,8 +55,12 @@ Rails.application.routes.draw do
     get 'techs_index', to: 'staffs#techs_index'
     resources :categories, except: [:show, :edit, :update]
     resources :staffs, only: [:show]
-    resources :customers, only: [:index, :show]
-    resources :users, only: [:new, :create]
+    resources :customers, only: [:index, :show] do
+      collection do
+         get 'responsible_table', to: 'customers#responsible_table' 
+      end
+    end
+    resources :users, only: [:new, :create, :update]
   end
 
 end
