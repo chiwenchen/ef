@@ -8,9 +8,9 @@
           %thead
             %tr
               %th= t('name')
-              %th= t('responsible_manger')
-              %th= t('responsible_sales')
-              %th= t('responsible_tech')
+              %th= t('main_owner')
+              %th= t('assigned_sales')
+              %th= t('assigned_tech')
               %th= t('operation')
           %tbody
             - @customers.each do |customer|
@@ -20,4 +20,4 @@
                   %td= f.association :owner, label_method: :username, collection: User.sales, label: false, input_html: {class: 'form-control'}
                   %td= f.association :sales, label_method: :username, collection: User.sales, label: false, input_html: {class: 'form-control'}
                   %td= f.association :tech, label_method: :username, collection: User.teches, label: false, input_html: {class: 'form-control'}
-                  %td= f.button :submit
+                  %td= f.button :submit, t('update_assignment')

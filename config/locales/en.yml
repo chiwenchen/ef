@@ -74,6 +74,9 @@ en:
   add_category: Add Category
   overdue_after_days: "Overdue after %{days} days"
   overdue: Overdue
+  main_owner: Main Owner
+  assigned_sales: Assigned Sales
+  assigned_tech: Assigned Tech
   sidebar:
     manage_user: Manage User
     background_management: Administration
