@@ -22,9 +22,16 @@ class Admin::UsersController < AdminController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    flash[:notice] = t('update_user_success', name: @user.username)
+    redirect_to :back
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :email)
+    params.require(:user).permit(:username, :password, :password_confirmation, :email, :owner_id, :sales_id, :tech_id)
   end
 end

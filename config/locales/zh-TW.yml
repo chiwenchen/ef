@@ -47,6 +47,7 @@
   staffs_list: 員工名單
   add_new_user: 新增使用者
   add_new_user_success: "已成功新增使用者 %{name}"
+  update_user_success: "已成功更新使用者 %{name} 的資料"
   confirm_assignment: 你確定修改指派人員?
   control_panel: 功能面板
   upload_images: 上傳圖片/影片
@@ -70,15 +71,19 @@
   change_to_complete: 處理完成
   close_this_issue: 結案
   reject_and_reprocess: 駁回
-  update_assignment: 重新指派
+  update_assignment: 指派
   category_list: 分類清單
   add_category: 新增分類
   overdue_after_days: "再%{days}天到期"
   overdue: 已超過處理期限
+  main_owner: 負責人
+  assigned_sales: 指派業務
+  assigned_tech: 指派技師
   sidebar:
     manage_user: 使用者管理
     background_management: 後台
     manage_service_request: 客訴單
+    responsible_table: 負責人員
   comments:
     title: 留言板
     unit: 則

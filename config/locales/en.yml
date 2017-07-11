@@ -48,6 +48,7 @@ en:
   staffs_list: Staffs List
   add_new_user: Add User
   add_new_user_success: "User %{name} was successfully added"
+  update_user_success: "User %{name} ' information was successfully updated"
   control_panel: Control Panel
   upload_images: Upload Images/Videos
   upload_attachments: Upload Attachments
@@ -73,10 +74,14 @@ en:
   add_category: Add Category
   overdue_after_days: "Overdue after %{days} days"
   overdue: Overdue
+  main_owner: Main Owner
+  assigned_sales: Assigned Sales
+  assigned_tech: Assigned Tech
   sidebar:
     manage_user: Manage User
     background_management: Administration
     manage_service_request: Claim
+    responsible_table: Responsible Table
   comments:
     title: Comments
     unit: replys

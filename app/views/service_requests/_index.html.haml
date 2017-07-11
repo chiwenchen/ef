@@ -22,7 +22,7 @@
           %tbody
             - service_requests.each do |sr|
               %tr
-                %td= sr.id[0..7]
+                %td= sr.request_id
                 %td= sr.customer.username
                 %td= sr.equipment_id
                 %td= sr.title
