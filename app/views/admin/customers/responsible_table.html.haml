@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    .box
+      .box-header.with-border 
+        %strong= t('customer_list')
+      .box-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th= t('name')
+              %th= t('main_owner')
+              %th= t('assigned_sales')
+              %th= t('assigned_tech')
+              %th= t('operation')
+          %tbody
+            - @customers.each do |customer|
+              %tr
+                %td= customer.username
+                = simple_form_for [:admin, customer] do |f|
+                  %td= f.association :owner, label_method: :username, collection: User.sales, label: false, input_html: {class: 'form-control'}
+                  %td= f.association :sales, label_method: :username, collection: User.sales, label: false, input_html: {class: 'form-control'}
+                  %td= f.association :tech, label_method: :username, collection: User.teches, label: false, input_html: {class: 'form-control'}
+                  %td= f.button :submit, t('update_assignment')

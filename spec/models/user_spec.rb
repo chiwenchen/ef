@@ -17,6 +17,9 @@
 #  updated_at             :datetime         not null
 #  username               :string
 #  line_user_id           :string
+#  owner_id               :uuid
+#  sales_id               :uuid
+#  tech_id                :uuid
 #
 
 require 'rails_helper'

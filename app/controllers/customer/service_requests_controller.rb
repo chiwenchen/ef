@@ -36,8 +36,8 @@ class Customer::ServiceRequestsController < CustomersController
 
         @service_request.deadline = Date.today + 7.days
         @service_request.save
-        User.admins.each do |admin|
-          LineService.send(admin.line_user_id, "客戶 #{current_user.username} 新增一筆客訴單，請前往系統指派人員。")
+        current_user.responsibles.each do |responsible|
+          LineService.send(responsible.line_user_id, "客戶 #{current_user.username} 已新增一筆客訴單，單號：#{@service_request.request_id}，請前往系統處理。")
         end
         format.html { redirect_to customer_root_path, notice: I18n.t('service_request.created') }
       else
@@ -52,6 +52,9 @@ class Customer::ServiceRequestsController < CustomersController
         translate = @service_request.description.to_traditional_chinese
         @service_request.translated_desc = translate
         @service_request.save
+        current_user.responsibles.each do |responsible|
+          LineService.send(responsible.line_user_id, "客戶 #{current_user.username} 已更新一筆客訴單，單號：#{@service_request.request_id}，請前往系統處理。")
+        end
         format.html { redirect_to customer_root_path, notice: I18n.t('service_request.updated') }
       else
         format.html { render :edit }
