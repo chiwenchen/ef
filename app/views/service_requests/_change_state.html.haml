@@ -1,0 +1,14 @@
+- if current_user.admin?
+  - if state == 'complete'
+    .change-state-btn= link_to t('reject_and_reprocess'), change_state_admin_service_request_path(service_request, aasm_event: :reject), class: 'btn btn-default btn-sm', method: 'POST'
+- elsif current_user.sales? || current_user.tech?
+  / - if state == 'initial'
+  /   .change-state-btn= link_to t('change_to_processing'), change_state_staff_service_request_path(service_request, aasm_event: :process), class: 'btn btn-default btn-sm', method: 'POST'
+  - if state == 'processing'
+    .change-state-btn= link_to t('change_to_complete'), change_state_staff_service_request_path(service_request, aasm_event: :complete), class: 'btn btn-default btn-sm', method: 'POST'
+  - if state == 'complete'
+    .change-state-btn= link_to t('reject_and_reprocess'), change_state_staff_service_request_path(service_request, aasm_event: :process), class: 'btn btn-default btn-sm', method: 'POST'
+- elsif current_user.customer?
+  - if state == 'complete'
+    .change-state-btn= link_to t('close_this_issue'), change_state_customer_service_request_path(service_request, aasm_event: :close), class: 'btn btn-default btn-sm', method: 'POST'
+    .change-state-btn= link_to t('reject_and_reprocess'), change_state_customer_service_request_path(service_request, aasm_event: :reject), class: 'btn btn-default btn-sm', method: 'POST'

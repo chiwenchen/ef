@@ -1,0 +1,5 @@
+= link_to admin_service_request_path(s) do
+  = "#{t('service_request.title')}："
+  %strong= s.title
+  = ", #{t('service_request.state')}："
+  = render 'common/color_state', state: s.state

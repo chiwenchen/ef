@@ -1,4 +1,4 @@
 .nested-fields.well
   = link_to_remove_association icon("remove"), f
-  = f.input :file, label: false
+  = f.input :file_path, label: false
   / = File.basename(f.object.file.path)

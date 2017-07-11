@@ -1,31 +1,17 @@
 class StaffsController < UsersController
-  # before_action :set_user, except: [:edit, :update]
-  
-  # def edit; end
+  layout 'staff'
+  before_action :must_be_staff
 
-  # def update; end
+  def index
 
-  # def send_mobile_token
-  #   @user.generate_and_send_mobile_token
-  #   redirect_to confirm_mobile_token_user_path(@user)
-  # end
+  end
 
-  # def confirm_mobile_token; end
+  private
 
-  # def verify_mobile_token
-  #   mobile_token = params[:user][:mobile_confirmation_token]
-  #   if verify_mobile_token_and_update_mobile(mobile_token)
-  #     flash[:notice] = "認證成功"
-  #     redirect_to root_path
-  #   else
-  #     flash[:error] = "認證碼錯誤，請重新輸入"
-  #     render :confirm_mobile_token
-  #   end
-  # end
-
-  # private
-
-  # def set_user
-  #   @user = User.find(params[:id]) 
-  # end
+  def must_be_staff
+    unless current_user && ( current_user.sales? || current_user.tech? )
+      flash[:notice] = '你必須有員工授權才可以進行此操作喔'
+      redirect_to root_path
+    end
+  end
 end

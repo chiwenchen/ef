@@ -1,17 +1,17 @@
 .row
   .col-sm-4.col-sm-offset-4
-    %h1.text-center Log in
+    %h1.text-center= t('sign_in')
     %hr/
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
-        = f.text_field :username, autofocus: true, placeholder: 'User Name', class: 'form-control'
+        = f.text_field :username, autofocus: true, placeholder: t('username'), class: 'form-control'
       .form-group
-        = f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'
-      - if devise_mapping.rememberable?
-        .form-group
-          = f.check_box :remember_me
-          = f.label :remember_me
+        = f.password_field :password, autocomplete: "off", placeholder: t('password'), class: 'form-control'
+      / - if devise_mapping.rememberable?
+      /   .form-group
+      /     = f.check_box :remember_me
+      /     = f.label :remember_me
       .form-group
-        = f.submit "Log in", class: "btn btn-primary btn-block btn-lg"
-    .text-center
-      = render "devise/shared/links"
+        = f.submit t('sign_in'), class: "btn btn-primary btn-block btn-lg"
+    / .text-center
+    /   = render "devise/shared/links"

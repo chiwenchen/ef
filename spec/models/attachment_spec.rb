@@ -3,7 +3,7 @@
 # Table name: attachments
 #
 #  id                 :uuid             not null, primary key
-#  file               :string
+#  file_path          :string
 #  service_request_id :uuid
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

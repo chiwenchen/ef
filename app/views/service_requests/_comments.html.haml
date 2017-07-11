@@ -1,0 +1,27 @@
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        = t('comments.title')
+      .box-body
+        - if comments.present?
+          - comments.each do |comment|
+            .row
+              .col-md-2
+                .name= "#{comment.user.username} #{t('reply')}："
+                .time= comment.created_at.localtime
+              .col-md-5
+                .well
+                  = comment.body
+              .col-md-5
+                .well
+                  = comment.translated_body
+            - if comment.comment_documents.present?
+              .row
+                .col-md-10.col-md-offset-2
+                  - comment.comment_documents.each do |document|
+                    = link_to File.basename(document.file_path.path), document.file_path.url, target: '_blank'
+            %hr
+
+        - else
+          = t('no_comments')

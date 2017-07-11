@@ -1,23 +1,95 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  hello: Hello
+  sign_in: Sign In
+  sign_out: Sign Out
+  sign_up: Sign Up
+  username: User Name
+  password: Password
+  service_system: Claim Service System
+  name: Name
+  requests_amount: Claim Amount
+  requests: Service Requsts
+  requests_list: Claims List
+  all_requests_list: All
+  initial_requests_list: Initial
+  processing_requests_list: Processing
+  complete_requests_list: Complete
+  close_requests_list: Close
+  register_date: Register Date
+  service_request:
+    title: Title
+    state: State
+    add: New Claim
+    index: No.
+    equipment_id: 'Equipment Number'
+    customer_name: Customer Name
+    category: Category
+    deadline: Deadline
+    assign_amount: Assigned
+    comments_amount: Comments
+    operation: Operate
+    not_assigned: Not assigned
+    no_comments: No comments
+    reply: Reply
+    description: Issue Description
+    translate_desc: Issue Description - Auto Translate
+    created: Claim was successfully created.
+    updated: Claim was successfully updated.
+    destroyed: Claim was successfully destroyed.
+    basic_info: Claim Basic Information
+  add_category_success: Category was successfully added.
+  confirm_assignment: Are you sure change this assignment?
+  delete_category_success: Category was successfully destroyed.
+  delete_confirm: Are you sure delete this record?
+  admin_list: Administrator List
+  sales_list: Sales List
+  tech_list: Technicians List
+  customer_list: Customers List
+  staffs_list: Staffs List
+  add_new_user: Add User
+  add_new_user_success: "User %{name} was successfully added"
+  update_user_success: "User %{name} ' information was successfully updated"
+  control_panel: Control Panel
+  upload_images: Upload Images/Videos
+  upload_attachments: Upload Attachments
+  images: Images
+  attachments: Attachments
+  assignment: Assignments
+  cancle: Cancle
+  submit: Submit
+  edit: Edit
+  delete: Delete
+  reply: reply
+  to_main_page: To Main Page
+  no_comments: No comments yet
+  submit_comment: Reply
+  add_comment_documents: Add a New Doc
+  please_wait: 'submitted, please wait'
+  change_to_processing: Take over
+  change_to_complete: Complete
+  close_this_issue: Close
+  reject_and_reprocess: Reject
+  update_assignment: Assign
+  category_list: Category List
+  add_category: Add Category
+  overdue_after_days: "Overdue after %{days} days"
+  overdue: Overdue
+  main_owner: Main Owner
+  assigned_sales: Assigned Sales
+  assigned_tech: Assigned Tech
+  sidebar:
+    manage_user: Manage User
+    background_management: Administration
+    manage_service_request: Claim
+    responsible_table: Responsible Table
+  comments:
+    title: Comments
+    unit: replys
+  chinese: Chinese
+  english: English
+  note: Note
+  operation: Operation
+  error:
+    invalid_equipment_id: Equipment Id Invalid
+  placeholder:
+    equipment_id: 'please enter EF-xxxx, example: EF-1234'

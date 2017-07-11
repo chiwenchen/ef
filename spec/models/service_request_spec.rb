@@ -2,16 +2,19 @@
 #
 # Table name: service_requests
 #
-#  id          :uuid             not null, primary key
-#  request_id  :string
-#  title       :string
-#  customer_id :uuid
-#  category_id :uuid
-#  description :text
-#  deadline    :date
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  state       :string
+#  id              :uuid             not null, primary key
+#  request_id      :string
+#  title           :string
+#  customer_id     :uuid
+#  category_id     :uuid
+#  description     :text
+#  deadline        :date
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  state           :string
+#  translated_desc :text
+#  equipment_id    :string
+#  used_lang       :string
 #
 
 require 'rails_helper'

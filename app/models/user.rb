@@ -16,6 +16,10 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
+#  line_user_id           :string
+#  owner_id               :uuid
+#  sales_id               :uuid
+#  tech_id                :uuid
 #
 
 class User < ActiveRecord::Base
@@ -23,11 +27,29 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :service_requests, foreign_key: :customer_id
+  has_many :comments
+  has_many :assignments
+  has_many :assigned_service_requests, through: :assignments, source: :service_request
+
+  belongs_to :owner, class_name: 'User'
+  has_many :responsible_for, class_name: 'User', foreign_key: 'owner_id'
+
+  belongs_to :sales, class_name: 'User'
+  has_many :sales_for, class_name: 'User', foreign_key: 'sales_id'
+
+  belongs_to :tech, class_name: 'User'
+  has_many :tech_for, class_name: 'User', foreign_key: 'tech_id'
+
+  belongs_to :sales, class_name: 'User'
+  has_one :user, class_name: 'User', foreign_key: 'sales_id'
+
+  belongs_to :tech, class_name: 'User'
+  has_one :user, class_name: 'User', foreign_key: 'tech_id'
 
   validates_uniqueness_of :username
 
   attr_accessor :role
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   def email_required?
@@ -36,6 +58,10 @@ class User < ActiveRecord::Base
 
   def email_changed?
     false
+  end
+
+  def responsibles
+    [self.owner, self.sales, self.tech].delete_if {|obj| obj == nil }
   end
 
   royce_roles [ :admin, :sales, :tech, :customer ]

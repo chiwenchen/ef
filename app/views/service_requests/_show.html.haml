@@ -2,48 +2,110 @@
   .col-md-6
     .box
       .box-header.with-border
-        Service Request Basic Info
+        %h3.box-title= t('service_request.basic_info')
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{data:{widget: 'collapse'}}
+            %i.fa.fa-minus
       .box-body
         %table.table.table-bordered
           %tbody
             %tr
-              %th 單號
+              %th= t('customer_name')
+              %th= @service_request.customer.username
+            %tr
+              %th= t('service_request.index')
               %th= @service_request.id[0..7]
             %tr
-              %th 標題
+              %th= t('service_request.equipment_id')
+              %th= @service_request.equipment_id
+            %tr
+              %th= t('service_request.title')
               %th= @service_request.title
             %tr
-              %th 客訴種類
+              %th= t('service_request.category')
               %th= @service_request.category.title
             %tr
-              %th 期限
+              %th= t('service_request.deadline')
               %th= @service_request.deadline
             %tr
-              %th 狀態
+              %th= t('service_request.state')
               %th
-                .float-left= @service_request.state
-                - if current_user.admin?
-                  = render 'admin/service_requests/change_state', service_request: @service_request, state: @service_request.state
-
+                .float-left= render 'common/color_state', state: @service_request.state
+                = render '/service_requests/change_state', service_request: @service_request, state: @service_request.state
+.row
+  .col-md-6
     .box
       .box-header.with-border
-        Service Request Description
+        = t('service_request.description')
+        = "(#{@service_request.used_lang})"
       .box-body
         = @service_request.description
-.row
-  .col-md-10
+  .col-md-6
     .box
       .box-header.with-border
-        Photos
+        = t('service_request.translate_desc')
+      .box-body
+        = @service_request.translated_desc
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        %h3.box-title= t('assignment')
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{data:{widget: 'collapse'}}
+            %i.fa.fa-minus
+      .box-body
+        - if current_user.admin? and !@service_request.close?
+          .row
+            .col-md-12.assignment-form
+              = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
+                = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
+                = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait'), confirm: t('confirm_assignment') }
+        - else
+          .row
+            - if @service_request.assignments != []
+              - @service_request.assignments.each do |a|
+                .col-md-3
+                  .info-box-icon.bg-aqua
+                    %i.fa.fa-user
+                  .info-box-content
+                    .username= "姓名: #{a.user.username}"
+                    .role
+                      = "角色: #{a.user.role_list.first}"
+            - else
+              .col-md-3= t('service_request.not_assigned')
+.row
+  .col-md-12
+    .box
+      .box-header.with-border
+        = t('images')
       .box-body
         - @service_request.images.each do |image|
-          = link_to image.file.url do
-            = image_tag image.file, size: '120 x 80'
+          = link_to image.file_path.url, target: '_blank' do
+            = image_tag image.file_path, size: '320x240'
 .row
-  .col-md-10
+  .col-md-12
     .box
       .box-header.with-border
-        Attachments
+        = t('attachments')
       .box-body
         - @service_request.attachments.each do |attachment|
-          = link_to File.basename(attachment.file.path), attachment.file.url
+          = link_to File.basename(attachment.file_path.path), attachment.file_path.url, target: '_blank'
+- unless @service_request.close?
+  .row
+    .col-md-12
+      .box
+        .box-body
+          = simple_form_for [@service_request, @comment] do |f|
+            .row
+              .col-md-10
+                = f.input :body, input_html: {class: 'form-control', rows: 6}, label: false
+                #comment_documents
+                  = f.simple_fields_for :comment_documents do |comment_document|
+                    = render 'comments/comment_document_fields', f: comment_document
+                  .links
+                    = link_to_add_association f, :comment_documents, partial: 'comments/comment_document_fields' do
+                      .btn.btn-primary.btn-sm= t('add_comment_documents')
+              .col-md-2
+                = f.button :submit, t('submit_comment'), class: 'btn btn-warning', data: { disable_with: t('please_wait') }
+= render 'service_requests/comments', comments: @comments

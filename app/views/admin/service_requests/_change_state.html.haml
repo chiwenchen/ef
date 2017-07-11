@@ -1,6 +1,0 @@
-- if state == 'initial'
-  .change-state-btn= link_to 'change to processing', change_state_admin_service_request_path(service_request, target_state: :processing), class: 'btn btn-default btn-sm', method: 'POST'
-- if state == 'processing'
-  .change-state-btn= link_to 'change to complete', change_state_admin_service_request_path(service_request, target_state: :complete), class: 'btn btn-default btn-sm', method: 'POST'
-- if state == 'complete'
-  .change-state-btn= link_to 'change to initial', change_state_admin_service_request_path(service_request, target_state: :initial), class: 'btn btn-default btn-sm', method: 'POST'
