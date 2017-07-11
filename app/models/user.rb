@@ -32,7 +32,13 @@ class User < ActiveRecord::Base
   has_many :assigned_service_requests, through: :assignments, source: :service_request
 
   belongs_to :owner, class_name: 'User'
-  has_one :user, class_name: 'User', foreign_key: 'owner_id'
+  has_many :responsible_for, class_name: 'User', foreign_key: 'owner_id'
+
+  belongs_to :sales, class_name: 'User'
+  has_many :sales_for, class_name: 'User', foreign_key: 'sales_id'
+
+  belongs_to :tech, class_name: 'User'
+  has_many :tech_for, class_name: 'User', foreign_key: 'tech_id'
 
   validates_uniqueness_of :username
 
