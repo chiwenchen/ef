@@ -3,7 +3,7 @@
 
 set :application, 'efeng'
 set :repo_url, 'git@github.com:chiwenchen/ef.git'
-set :deploy_to, "/home/apps/besideyou"
+set :deploy_to, "/home/apps/efeng"
 
 # Default value for :format is :pretty
 # set :format, :pretty
@@ -15,7 +15,7 @@ set :deploy_to, "/home/apps/besideyou"
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secret.yml', 'config/setting.yml')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')
