@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post 'line', to: 'webhooks#line'
     end
   end
-  devise_for :users
+  devise_for :users, skip: :registrations
   
   devise_scope :user do
     root to: "devise/sessions#new"
