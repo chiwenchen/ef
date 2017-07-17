@@ -7,6 +7,17 @@ class Admin::ServiceRequestsController < AdminController
     else
       @service_requests = ServiceRequest.all.order('created_at DESC')
     end
+    respond_to do |format|
+      format.html
+      if params[:service_request_ids]
+        format.pdf do
+          pdf = ServiceRequestPdf.new(params[:service_request_ids])
+          send_data pdf.render, file_name: "Claim List",
+                                type: "application/pdf",
+                                disposition: "inline"
+        end
+      end
+    end
   end
 
   def show
