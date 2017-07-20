@@ -57,6 +57,9 @@ gem 'line-bot-api'
 
 gem 'sidekiq'
 
+gem 'prawn'
+gem 'prawn-table'
+
 
 group :development do
   gem 'web-console', '~> 2.0'

@@ -7,6 +7,7 @@
   password: 密碼
   service_system: 客訴服務系統
   name: 姓名
+  set_locale: 設定語言
   requests_amount: 客訴單數量
   requests: 客訴單
   requests_list: 客訴單清單
