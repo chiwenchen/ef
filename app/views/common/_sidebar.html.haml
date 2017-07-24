@@ -1,6 +1,6 @@
-.main-sidebar
-  .sidebar
-    %ul.nav.sidebar-menu
+%aside.main-sidebar
+  %section.sidebar
+    %ul.nav.sidebar-menu.tree
       - if current_user.admin?
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('all_requests_list')}", admin_root_path
