@@ -1,10 +1,52 @@
+- if service_requests_mainly_response.present?
+  .row
+    .col-md-12
+      .box
+        %p#notice= notice
+        .box-header.with-border 
+          主負責
+        .box-body
+          %table.table.table-bordered
+            %thead
+              %tr
+                %th= t('service_request.index')
+                %th= t('service_request.customer_name')
+                %th= t('service_request.equipment_id')
+                %th= t('service_request.title')
+                / %th= t('service_request.category')
+                %th= t('service_request.deadline')
+                %th= t('service_request.state')
+                %th= t('service_request.assign_amount')
+                %th= t('service_request.comments_amount')
+                %th= t('service_request.operation')
+            %tbody
+              - service_requests_mainly_response.each do |sr|
+                %tr
+                  %td= sr.request_id
+                  %td= sr.customer.username
+                  %td= sr.equipment_id
+                  %td= sr.title
+                  / %td= sr.category.title
+                  %td
+                    - if sr.close? or sr.complete?
+                      = "-"
+                    - elsif sr.deadline >= Date.today
+                      = t('overdue_after_days', days: sr.deadline.mjd - Date.today.mjd)
+                    - else
+                      = t('overdue')
+                  %td= render 'common/color_state', state: sr.state
+                  %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
+                  %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
+                  %td
+                    = link_to t('service_request.reply'), [role, sr]
+                    - if current_user.customer? && !sr.close?
+                      = link_to t('edit'), edit_customer_service_request_path(sr)
+                      = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
 .row
   .col-md-12
     .box
       %p#notice= notice
       .box-header.with-border 
-        / %h3 Listing Service Requests
-        / = link_to 'New Service Request', new_customers_service_request_path, class: 'btn bg-purple'
       .box-body
         %table.table.table-bordered
           %thead

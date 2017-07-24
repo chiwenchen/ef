@@ -5,6 +5,6 @@ class Admin::CustomersController < AdminController
   end
 
   def responsible_table
-    @customers = User.customers
+    @customers = User.customers.order('created_at DESC')
   end
 end

@@ -2,8 +2,12 @@ class Staff::ServiceRequestsController < StaffsController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
-    @service_requests = current_user.assigned_service_requests.order('created_at DESC')
-    # change to staff belongs only
+    if current_user.sales?
+      @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC')
+      @service_requests = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).order('created_at DESC')
+    elsif current_user.tech?
+      @service_requests = ServiceRequest.joins(:customer).where(users: {tech_id: current_user.id}).order('created_at DESC')
+    end
   end
 
   def show
