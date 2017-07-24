@@ -65,13 +65,14 @@
           .row
             - if @service_request.assignments != []
               - @service_request.assignments.each do |a|
-                .col-md-3
-                  .info-box-icon.bg-aqua
-                    %i.fa.fa-user
-                  .info-box-content
-                    .username= "姓名: #{a.user.username}"
-                    .role
-                      = "角色: #{a.user.role_list.first}"
+                .col-md-3.col-xs-12
+                  .info-box
+                    .info-box-icon.bg-aqua
+                      %i.fa.fa-user
+                    .info-box-content
+                      .username= "姓名: #{a.user.username}"
+                      .role
+                        = "角色: #{a.user.role_list.first}"
             - else
               .col-md-3= t('service_request.not_assigned')
 .row
