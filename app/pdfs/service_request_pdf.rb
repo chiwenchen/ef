@@ -3,13 +3,15 @@ class ServiceRequestPdf < Prawn::Document
     super(top_margin: 30, page_layout: :landscape)
     @service_request_ids = service_request_ids
     table_object = [
-      [I18n.t('service_request.customer_name'), 'Equipment ID', 'Title']
+      ['Customer Name', 'Equipment ID', 'Title', 'Deadline', 'State', 'Owner', 'Sales', 'Tech']
     ]
-    10.times do
-      @service_request_ids.each do |id|
-        sr = ServiceRequest.find(id)
-        table_object << [sr.customer.username, sr.equipment_id, sr.title]
-      end
+    @service_request_ids.each do |id|
+      sr = ServiceRequest.find(id)
+      customer = sr.customer
+      owner = (customer.owner.username if customer.owner) || '-'
+      sales = (customer.sales.username if customer.sales) || '-'
+      tech = (customer.tech.username if customer.tech) || '-'
+      table_object << [customer.username, sr.equipment_id, sr.title, sr.deadline, sr.state, owner, sales, tech]
     end
     # font_families.update("zhonly" => {
     #   :normal => Rails.root.join("app/assets/fonts/cwTeXKai-zhonly.ttf")
