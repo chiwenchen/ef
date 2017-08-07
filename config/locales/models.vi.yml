@@ -1,0 +1,22 @@
+vi:
+  activerecord:
+    attributes:
+      user:
+        username: họ tên
+        sales: nghiệp vụ
+        email: hộp thư   
+        password: mật mã        
+        password_confirmation: xác nhận mật mã      
+        role: vai trò
+      service_request:
+        title: tiêu đề
+        category: phân loại        
+        description: miêu tả vấn đề      
+        deadline: thời hạn
+        initial: chưa sử lý
+        processing: đang sử lý
+        complete: hoàn toàn
+        close: đóng     
+      category:
+        tw_title: tiêu đề tiếng Trung       
+        en_title: tiêu đề tiếng Anh
