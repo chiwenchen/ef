@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :users, only: [:new, :create]
+  resources :users, only: [:update, :edit] do
+    member do
+      post 'reset_password', to: 'users#reset_password'
+    end
+  end
 
   resources :service_requests do
     resources :comments, only: [:create]
