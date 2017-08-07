@@ -1,0 +1,98 @@
+vi:
+  hello: xin chào
+  sign_in: nhập vào
+  sign_out: thoá ra
+  sign_up: đăng ký
+  username: họ tên
+  password: mật khẩu
+  service_system: hệ thống dịch vụ khiếu nại  
+  name: họ tên
+  set_locale: ngôn ngữ cài đặt 
+  requests_amount: số lượng đơn khiếu nại
+  requests: đơn khiếu nại
+  requests_list: danh sách khiếu nại
+  all_requests_list: toàn bộ
+  initial_requests_list: chưa chỉ định
+  processing_requests_list: đang sử lý
+  complete_requests_list: đã hoàn thành
+  close_requests_list: đóng 
+  register_date: ngày tháng đăng ký  
+  service_request:
+    title: tiêu đề
+    state: trạng thái 
+    add: thêm
+    index: số đơn
+    equipment_id: mã số tiết bị   
+    customer_name: tên khách hàng  
+    category: phân loại khiếu nại    
+    deadline: thời hạn
+    assign_amount: số người chỉ định
+    comments_amount: số lượng trả lời tin nhắn    
+    operation: thao tác
+    not_assigned: chưa chỉ định số người
+    no_comments: không có tin nhắn
+    reply: trả lời
+    description: mô tả vấn đề
+    translate_desc: mô tả vấn đề - phiên dịch 
+    created: đã được thêm đơn khiếu nại
+    updated: đã cập nhật đơn khiếu nại
+    destroyed: đã xóa đơn khiếu nại
+    basic_info: thông tin cơ bản của đơn khiếu nại
+  add_category_success: thêm danh mục phân loại 
+  delete_category_success: xóa danh mục phân loại
+  delete_confirm: cần xóa không?
+  admin_list: danh sách quản lý
+  sales_list: danh sách nhân viên nghiệp vụ
+  tech_list: danh sách nhân viện kỹ thuật
+  customer_list: danh sách khách hàng
+  staffs_list: danh sách nhân viên
+  add_new_user: thêm người sử dụng
+  add_new_user_success: "đã hoàn thành thêm người sử dụng %{name}"
+  update_user_success: "cập nhật thành công các thông tin của người sử dụng %{name} "
+  confirm_assignment: bạn cẩn đổi người chỉ định không?
+  control_panel: bảng điều khiển
+  upload_images: hình ảnh tải lên
+  add_images: thêm hình ảnh
+  upload_attachments: tải lên hồ sơ   
+  add_attachments: thêm hồ sơ
+  images: hình ảnh
+  attachments: hồ sơ
+  assignment: chỉ phái nhân viên
+  cancle: huỷ
+  submit: gửi
+  edit: chỉnh sửa
+  delete: xóa
+  reply: phản hồi  
+  to_main_page: về trang đầu
+  no_comments: không tin nhắn
+  submit_comment: phản hồi
+  add_comment_documents: lặp hồ sơ mới
+  please_wait: 'đang gửi đi, xin đợi giây lát'
+  change_to_processing: bắt đầu xử lý
+  change_to_complete: xử lý xong
+  close_this_issue: đóng lại
+  reject_and_reprocess: từ chối
+  update_assignment: chỉ phái
+  category_list: danh mục chia loại
+  add_category: thêm danh mục
+  overdue_after_days: "thêm%{days}ngày hết hạn"
+  overdue: đã quá thời hạn xử lý
+  main_owner: người phụ trách
+  assigned_sales: chỉ định nghiệp vụ
+  assigned_tech: chỉ định kỹ sư
+  sidebar:
+    manage_user: người sử dụng quản lý
+    background_management: nền quản lý
+    manage_service_request: đơn khiếu nại
+    responsible_table: nhân viên phụ trách
+  comments:
+    title: thông điệp   
+    unit: đơn vị
+  chinese: tiếng trung
+  english: tiếng Anh
+  note: ghi chú
+  operation: thao tác
+  error:
+    invalid_equipment_id: mã số thiết bị không có hiệu lực
+  placeholder:
+    equipment_id: 'nhập vào EF-xxxx, ví dụ EF-1234'
