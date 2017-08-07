@@ -1,0 +1,15 @@
+.row
+  .col-md-6.col-md-offset-3
+    %h1.text-center= t('edit_user')
+    %hr
+    .well
+      = simple_form_for current_user do |f|
+        .row
+          .col-md-6= f.input :username, input_html: {class: 'form-control'}, required: true
+        .row
+          .col-md-6= f.input :email, as: :email, input_html: {class: 'form-control'}, required: true
+        .row
+          .col-md-12= f.button :submit, t('submit'), data: { disable_with: t('please_wait') }
+    %hr
+    = link_to "Change your password", reset_password_user_path(current_user), method: 'POST'
+    / = link_to t('cancle'), root_path, class: 'btn btn-default'
