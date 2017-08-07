@@ -1,5 +1,6 @@
 .main-header
-  .logo= t('service_system')
+  .logo
+    = link_to t('service_system'), root_path
   %nav.navbar.navbar-static-top(role='navigation')
     %a.sidebar-toggle(href='#' data-toggle='offcanvas' role='button')
     .navbar-custom-menu
