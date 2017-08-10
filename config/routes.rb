@@ -43,6 +43,9 @@ Rails.application.routes.draw do
       member do
         post 'change_state', to: 'service_requests#change_state'
       end
+      collection do
+        get 'owned', to: 'service_requests#owned_index'
+      end
     end
   end
 

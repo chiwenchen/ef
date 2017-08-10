@@ -3,11 +3,14 @@ class Staff::ServiceRequestsController < StaffsController
 
   def index
     if current_user.sales?
-      request_index_for_owner
       request_index_for_sales
     elsif current_user.tech?
       request_index_for_tech
     end
+  end
+
+  def owned_index
+    request_index_for_owner
   end
 
   def show
@@ -35,11 +38,11 @@ class Staff::ServiceRequestsController < StaffsController
     end
 
     def request_index_for_owner
-      @main_q = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).search(params[:main_q])
+      @q = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).search(params[:q])
       has_search_term_for_main = false
-      params[:main_q].each { |k,v| has_search_term_for_main = true if v != '' } if params[:main_q]
-      if @main_q and has_search_term_for_main
-        @service_requests_mainly_response = @main_q.result.order('created_at DESC')
+      params[:q].each { |k,v| has_search_term_for_main = true if v != '' } if params[:q]
+      if @q and has_search_term_for_main
+        @service_requests_mainly_response = @q.result.order('created_at DESC')
       else
         @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC')
       end
