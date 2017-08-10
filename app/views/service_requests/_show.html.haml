@@ -55,26 +55,53 @@
           %button.btn.btn-box-tool{data:{widget: 'collapse'}}
             %i.fa.fa-minus
       .box-body
-        - if current_user.admin? and !@service_request.close?
-          .row
-            .col-md-12.assignment-form
-              = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
-                = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
-                = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait'), confirm: t('confirm_assignment') }
-        - else
-          .row
-            - if @service_request.assignments != []
-              - @service_request.assignments.each do |a|
-                .col-md-3.col-xs-12
-                  .info-box
-                    .info-box-icon.bg-aqua
-                      %i.fa.fa-user
-                    .info-box-content
-                      .username= "姓名: #{a.user.username}"
-                      .role
-                        = "角色: #{a.user.role_list.first}"
-            - else
-              .col-md-3= t('service_request.not_assigned')
+        - if @service_request.owner
+          .col-md-3.col-xs-12
+            .info-box
+              .info-box-icon.bg-aqua
+                %i.fa.fa-user
+              .info-box-content
+                .username= "姓名: #{@service_request.owner.username}"
+                .role
+                  = "角色: 主負責人"
+        - if @service_request.sales
+          .col-md-3.col-xs-12
+            .info-box
+              .info-box-icon.bg-aqua
+                %i.fa.fa-user
+              .info-box-content
+                .username= "姓名: #{@service_request.sales.username}"
+                .role
+                  = "角色: 負責業務"
+        - if @service_request.tech
+          .col-md-3.col-xs-12
+            .info-box
+              .info-box-icon.bg-aqua
+                %i.fa.fa-user
+              .info-box-content
+                .username= "姓名: #{@service_request.tech.username}"
+                .role
+                  = "角色: 負責技術員"
+        / - if current_user.admin? and !@service_request.close?
+        /   .row
+        /     .col-md-12.assignment-form
+        /       = simple_form_for [current_user, @service_request], url: update_assignment_admin_service_request_path(@service_request), method: 'POST', label: false do |f|
+        /         = f.association :responsibles, as: :check_boxes, label_method: :username, collection: User.sales + User.teches, include_hidden: false, label: 'Change assignment'
+        /         = f.button :submit, t('update_assignment'), data: { disable_with: t('please_wait'), confirm: t('confirm_assignment') }
+        / - else
+        /   .row
+        /     - if @service_request.assignments != []
+        /       - @service_request.assignments.each do |a|
+        /         .col-md-3.col-xs-12
+        /           .info-box
+        /             .info-box-icon.bg-aqua
+        /               %i.fa.fa-user
+        /             .info-box-content
+        /               .username= "姓名: #{a.user.username}"
+        /               .role
+        /                 = "角色: #{a.user.role_list.first}"
+        /     - else
+        /       .col-md-3= t('service_request.not_assigned')
 .row
   .col-md-12
     .box

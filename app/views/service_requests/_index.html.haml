@@ -39,7 +39,6 @@
                 / %th= t('service_request.category')
                 %th= t('service_request.deadline')
                 %th= t('service_request.state')
-                %th= t('service_request.assign_amount')
                 %th= t('service_request.comments_amount')
                 %th= t('service_request.operation')
             %tbody
@@ -58,7 +57,6 @@
                     - else
                       = t('overdue')
                   %td= render 'common/color_state', state: sr.state
-                  %td= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
                   %td= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
                   %td
                     = link_to t('service_request.reply'), [role, sr]
@@ -107,7 +105,6 @@
               / %th= t('service_request.category')
               %th.hidden-xs.hidden-sm= t('service_request.deadline')
               %th= t('service_request.state')
-              %th.hidden-xs.hidden-sm= t('service_request.assign_amount')
               %th.hidden-xs.hidden-sm= t('service_request.comments_amount')
               %th= t('service_request.operation')
           %tbody
@@ -126,7 +123,6 @@
                   - else
                     = t('overdue')
                 %td= render 'common/color_state', state: sr.state
-                %td.hidden-xs.hidden-sm= sr.assignments.blank? ? t('service_request.not_assigned') : sr.assignments.count
                 %td.hidden-xs.hidden-sm= sr.comments.blank? ? t('service_request.no_comments') : "#{sr.comments.count} #{t('comments.unit')}"
                 %td
                   = link_to t('service_request.reply'), [role, sr]
