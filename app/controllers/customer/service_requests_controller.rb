@@ -26,10 +26,8 @@ class Customer::ServiceRequestsController < CustomersController
     respond_to do |format|
       if @service_request.valid?
         @service_request.customer = current_user
-        # @service_request.deadline = Date.strptime(service_request_params[:deadline], '%m/%d/%Y')
-        used_lang = EasyTranslate.detect @service_request.description
-        @service_request.used_lang = used_lang
-        if used_lang != 'zh-TW'
+        @service_request.used_lang = EasyTranslate.detect @service_request.description
+        if @service_request.used_lang != 'zh-TW'
           translate = @service_request.description.to_traditional_chinese
         else
           translate = @service_request.description.to_english
