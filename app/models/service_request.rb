@@ -26,9 +26,9 @@ class ServiceRequest < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, reject_if: :all_blank, allow_destroy: true
   has_many :comments
 
-  has_many :assignments
-  has_many :responsibles, through: :assignments, source: :user
-  accepts_nested_attributes_for :assignments, reject_if: :all_blank, allow_destroy: true
+  # has_many :assignments
+  # has_many :responsibles, through: :assignments, source: :user
+  # accepts_nested_attributes_for :assignments, reject_if: :all_blank, allow_destroy: true
 
   before_create :generate_request_id
 
@@ -76,5 +76,17 @@ class ServiceRequest < ActiveRecord::Base
     unless /EF-\d\d\d\d\b/ =~ self.equipment_id || self.equipment_id == ""
       errors.add(:equipment_id, I18n.t('error.invalid_equipment_id'))
     end
+  end
+
+  def owner
+    self.customer.owner
+  end
+
+  def sales
+    self.customer.sales
+  end
+
+  def tech
+    self.customer.tech
   end
 end

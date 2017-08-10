@@ -2,8 +2,11 @@ class Admin::ServiceRequestsController < AdminController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
+    @q = ServiceRequest.search(params[:q])
     if params[:state].present?
       @service_requests = ServiceRequest.where(state: params[:state]).order('created_at DESC')
+    elsif params[:q].present?
+      @service_requests = @q.result
     else
       @service_requests = ServiceRequest.all.order('created_at DESC')
     end

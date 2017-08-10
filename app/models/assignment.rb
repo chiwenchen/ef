@@ -9,7 +9,7 @@
 #  updated_at         :datetime         not null
 #
 
-class Assignment < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :service_request
-end
+# class Assignment < ActiveRecord::Base
+#   belongs_to :user
+#   belongs_to :service_request
+# end
