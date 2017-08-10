@@ -15,10 +15,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => Setting.domain }
   config.action_mailer.smtp_settings = {
-    address:              'smtp.mandrillapp.com',
+    address: 'smtp.mailgun.org',
     port:                 587,
-    user_name:            Setting.mandrill_user_name,
-    password:             Setting.mandrill_api_key,
+    user_name: Setting.mailgun_default_smtp_login,
+    domain: Setting.mailgun_domain,
+    password: Setting.mailgun_default_password,
     authentication:       'plain',
     enable_starttls_auto: true
   }

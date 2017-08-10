@@ -1,18 +1,27 @@
 .main-header
-  .logo= t('service_system')
-  %nav.navbar.navbar-fixed-top(role='navigation')
+  .logo
+    = link_to t('service_system'), root_path
+  %nav.navbar.navbar-static-top(role='navigation')
     %a.sidebar-toggle(href='#' data-toggle='offcanvas' role='button')
-    .collapse.navbar-collapse.navbar-custom-menu
+    .navbar-custom-menu
       %span.sr-only Toggle navigation
       %ul.nav.navbar-nav
-        - if I18n.locale != :'zh-TW'
-          %li= link_to '切換至中文', set_locale_home_index_path(locale: 'zh-TW')
-        - if I18n.locale != :en
-          %li= link_to 'Switch to English', set_locale_home_index_path(locale: :en)
+        %li.hidden-xs.hidden-sm
+          = simple_form_for :languages, url: set_locale_home_index_path, html: {class: 'navbar-form'} do |f|
+            = f.input :locale, collection: Languages.array, include_blank: false, input_html: {class: 'form-control'}, label: false, selected: session[:locale]
+            = f.submit t('set_locale'), class: 'btn btn-default'
+        %li.dropdown.hidden-md.hidden-lg
+          %a.dropdown-toggle(href='#' data-toggle='dropdown' aria-expanded='false')
+            %i.fa.fa-language
+          %ul.dropdown-menu.row
+            = simple_form_for :languages, url: set_locale_home_index_path do |f|
+              .col-md-12= f.input :locale, collection: Languages.array, include_blank: false, input_html: {class: 'form-control'}, label: false, selected: session[:locale]
+              .col-md-12= f.submit t('set_locale'), class: 'btn btn-default'
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false")
               = current_user.username
               %span.caret
             %ul.dropdown-menu.pull-right(role="menu")
-              %li= link_to t('sign_out'), destroy_user_session_path, method: 'DELETE'
+              %li= link_to t('edit'), edit_user_path(current_user), style: 'color: black'
+              %li= link_to t('sign_out'), destroy_user_session_path, method: 'DELETE', style: 'color: black'

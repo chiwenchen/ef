@@ -14,11 +14,15 @@ Rails.application.routes.draw do
   resources :home do
     collection do
       get 'landing', to: 'home#landing'
-      get 'set_locale', to: 'home#set_locale'
+      post 'set_locale', to: 'home#set_locale'
     end
   end
 
-  # resources :users, only: [:new, :create]
+  resources :users, only: [:update, :edit] do
+    member do
+      post 'reset_password', to: 'users#reset_password'
+    end
+  end
 
   resources :service_requests do
     resources :comments, only: [:create]

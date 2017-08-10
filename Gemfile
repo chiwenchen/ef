@@ -60,6 +60,9 @@ gem 'ransack'
 
 gem 'sidekiq'
 
+gem 'prawn'
+gem 'prawn-table'
+
 
 
 group :development do

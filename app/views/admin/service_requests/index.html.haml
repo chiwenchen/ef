@@ -1,1 +1,2 @@
-= render 'service_requests/index', service_requests: @service_requests, role: :admin
+= render 'service_requests/index', service_requests: @service_requests, service_requests_mainly_response: nil, role: :admin
+= link_to "Download PDF", admin_service_requests_path(service_request_ids: @service_requests.map(&:id), format: 'pdf')

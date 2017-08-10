@@ -7,6 +7,7 @@ en:
   password: Password
   service_system: Claim Service System
   name: Name
+  set_locale: Set Language
   requests_amount: Claim Amount
   requests: Service Requsts
   requests_list: Claims List
