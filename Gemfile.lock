@@ -565,6 +565,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   settingslogic
   shoulda-matchers
+  sidekiq
   simple_form
   spring
   sqlite3

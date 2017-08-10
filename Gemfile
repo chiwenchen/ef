@@ -55,7 +55,11 @@ gem 'to_lang'
 #line
 gem 'line-bot-api'
 
+
 gem 'ransack'
+
+gem 'sidekiq'
+
 
 
 group :development do

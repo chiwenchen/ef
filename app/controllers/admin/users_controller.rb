@@ -16,9 +16,9 @@ class Admin::UsersController < AdminController
       redirect_to new_admin_user_path
     else
       @user.errors.full_messages.each do |msg|
-        flash[:notice] = msg
+        flash[:danger] = msg
       end
-      render 'devise/registrations/new'
+      render 'admin/users/new'
     end
   end
 
