@@ -55,10 +55,14 @@ gem 'to_lang'
 #line
 gem 'line-bot-api'
 
+
+gem 'ransack'
+
 gem 'sidekiq'
 
 gem 'prawn'
 gem 'prawn-table'
+
 
 
 group :development do

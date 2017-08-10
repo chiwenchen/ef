@@ -43,11 +43,36 @@
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
 .row
+  .col-md-6
+    .box
+      .box-header.with-border
+        %h3.box-title= t('service_request.search_form')
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{data:{widget: 'collapse'}}
+            %i.fa.fa-minus
+      .box-body
+        - role = current_user.roles.first.name.to_sym
+        - role = :staff if (role == :sales or role == :tech)
+        = search_form_for [role, @q] do |f|
+          .form-group.row
+            .col-md-4= f.label :request_id_cont, '單號包含'
+            .col-md-8= f.search_field :request_id_cont, class: 'form-control'
+          .form-group.row
+            .col-md-4= f.label :equipment_id_cont, '設備編號包含'
+            .col-md-8= f.search_field :equipment_id_cont, class: 'form-control'
+          .form-group.row
+            .col-md-4= f.label :title_cont, '標題包含'
+            .col-md-8= f.search_field :title_cont, class: 'form-control'
+          .form-group.row
+            .col-md-12= f.button :submit, class: 'btn btn-primary'
   .col-md-12
     .box
       %p#notice= notice
-      .box-header.with-border 
+      / %h3 Listing Service Requests
+      / = link_to 'New Service Request', new_customers_service_request_path, class: 'btn bg-purple'
+      .box-header.with-border
       .box-body
+        %hr
         %table.table.table-bordered
           %thead
             %tr
