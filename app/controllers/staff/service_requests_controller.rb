@@ -2,19 +2,11 @@ class Staff::ServiceRequestsController < StaffsController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
-    # @q = current_user.assigned_service_requests.search(params[:q])
-    # has_search_term = false
-    # params[:q].each do |k,v|
-    #   has_search_term = true if v != ''
-    # end
-    if has_search_term
-      @service_requests = @q.result.order('created_at DESC')
-    # change to staff belongs only
-    elsif current_user.sales?
-      @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC')
-      @service_requests = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).order('created_at DESC')
+    if current_user.sales?
+      request_index_for_owner
+      request_index_for_sales
     elsif current_user.tech?
-      @service_requests = ServiceRequest.joins(:customer).where(users: {tech_id: current_user.id}).order('created_at DESC')
+      request_index_for_tech
     end
   end
 
@@ -35,11 +27,42 @@ class Staff::ServiceRequestsController < StaffsController
       @service_request = ServiceRequest.find(params[:id])
     end
 
-
     def service_request_params
       params.require(:service_request).permit(:title, :category_id, :description, :deadline, 
         images_attributes: [:id, :file, :_destroy], 
         attachments_attributes: [:id, :file, :_destroy]
       )
+    end
+
+    def request_index_for_owner
+      @main_q = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).search(params[:main_q])
+      has_search_term_for_main = false
+      params[:main_q].each { |k,v| has_search_term_for_main = true if v != '' } if params[:main_q]
+      if @main_q and has_search_term_for_main
+        @service_requests_mainly_response = @main_q.result.order('created_at DESC')
+      else
+        @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC')
+      end
+    end
+
+    def request_index_for_sales
+      @q = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).search(params[:q])
+      has_search_term = false
+      params[:q].each { |k,v| has_search_term = true if v != '' } if params[:q]
+      if @q and has_search_term
+        @service_requests = @q.result.order('created_at DESC')
+      else
+        @service_requests = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).order('created_at DESC')
+      end
+    end
+    def request_index_for_tech
+      @q = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).search(params[:q])
+      has_search_term = false
+      params[:q].each { |k,v| has_search_term = true if v != '' } if params[:q]
+      if @q and has_search_term
+        @service_requests = @q.result.order('created_at DESC')
+      else
+        @service_requests = ServiceRequest.joins(:customer).where(users: {tech_id: current_user.id}).order('created_at DESC')
+      end
     end
 end
