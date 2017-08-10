@@ -55,6 +55,8 @@ gem 'to_lang'
 #line
 gem 'line-bot-api'
 
+gem 'ransack'
+
 
 group :development do
   gem 'web-console', '~> 2.0'

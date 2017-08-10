@@ -2,7 +2,8 @@ class Customer::ServiceRequestsController < CustomersController
   before_action :set_service_request, only: [:show, :edit, :update, :destroy, :change_state]
 
   def index
-    @service_requests = ServiceRequest.where(customer: current_user).order('created_at DESC')
+    @q = ServiceRequest.where(customer: current_user).search(params[:q])
+    @service_requests = @q.result.order('created_at DESC')
   end
 
   def show
