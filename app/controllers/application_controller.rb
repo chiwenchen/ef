@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
     length = my_string.index(end_at, ini).to_i - ini
     my_string[ini,length]
   end
+
+  def require_sign_in
+    unless current_user
+      redirect_to root_path
+    end
+  end
 end
