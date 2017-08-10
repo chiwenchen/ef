@@ -2,8 +2,12 @@ class Staff::ServiceRequestsController < StaffsController
   before_action :set_service_request, only: [:show, :change_state]
 
   def index
-    if params[:q]
-      @q = current_user.assigned_service_requests.search(params[:q])
+    # @q = current_user.assigned_service_requests.search(params[:q])
+    # has_search_term = false
+    # params[:q].each do |k,v|
+    #   has_search_term = true if v != ''
+    # end
+    if has_search_term
       @service_requests = @q.result.order('created_at DESC')
     # change to staff belongs only
     elsif current_user.sales?
