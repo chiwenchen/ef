@@ -23,6 +23,8 @@
       - if current_user.sales? or current_user.tech?
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('requests_list')}", staff_root_path
+      - if current_user.sales?
+        %li.item= link_to "Claim List (Owned)", owned_staff_service_requests_path
       - if current_user.customer?
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('service_request.add')}", new_customer_service_request_path
