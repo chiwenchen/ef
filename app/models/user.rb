@@ -64,5 +64,17 @@ class User < ActiveRecord::Base
     [self.owner, self.sales, self.tech].delete_if {|obj| obj == nil }
   end
 
+  def assigned_service_requests_as_owner
+    ServiceRequest.joins(:customer).where(users: {owner_id: self.id}).order('created_at DESC')
+  end
+
+  def assigned_service_requests_as_sales
+    ServiceRequest.joins(:customer).where(users: {sales_id: self.id}).order('created_at DESC')
+  end
+
+  def assigned_service_requests_as_tech
+    ServiceRequest.joins(:customer).where(users: {tech_id: self.id}).order('created_at DESC')
+  end
+
   royce_roles [ :admin, :sales, :tech, :customer ]
 end
