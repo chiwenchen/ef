@@ -63,6 +63,7 @@ gem 'sidekiq'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'awesome_rails_console'
 
 
 group :development do
@@ -82,7 +83,6 @@ end
 group :development, :test do
   gem 'pry'
   gem 'pry-byebug' #same as pry-nav, but supporting ruby 2+
-  gem 'awesome_rails_console'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
