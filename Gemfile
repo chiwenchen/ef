@@ -65,6 +65,8 @@ gem 'prawn-table'
 
 gem 'awesome_rails_console'
 
+gem 'kaminari'
+
 
 group :development do
   gem 'web-console', '~> 2.0'

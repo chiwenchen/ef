@@ -22,16 +22,25 @@ class Admin::UsersController < AdminController
     end
   end
 
-  def update
+  def edit
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:notice] = t('update_user_success', name: @user.username)
-    redirect_to :back
+  end
+
+  def update
+    clean_user_params = user_params.delete_if{|k, v| v.blank?}
+    @user = User.find(params[:id])
+    if @user.update(clean_user_params)
+      flash[:notice] = t('update_user_success', name: @user.username)
+      redirect_to :back
+    else
+      flash[:notice] = @user.errors.full_messages.first
+      redirect_to :back
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :email, :owner_id, :sales_id, :tech_id)
+    params.require(:user).permit(:username, :password, :password_confirmation, :email, :owner_id, :sales_id, :tech_id, :staff_number, :customer_number)
   end
 end

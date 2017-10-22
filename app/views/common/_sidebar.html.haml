@@ -4,10 +4,10 @@
       - if current_user.admin?
         %li.header=  t('sidebar.manage_service_request')
         %li.item= link_to "#{t('all_requests_list')}", admin_root_path
-        %li.item= link_to "#{t('initial_requests_list')}", admin_root_path(state: 'initial')
-        %li.item= link_to "#{t('processing_requests_list')}", admin_root_path(state: 'processing')
-        %li.item= link_to "#{t('complete_requests_list')}", admin_root_path(state: 'complete')
-        %li.item= link_to "#{t('close_requests_list')}", admin_root_path(state: 'close')
+        / %li.item= link_to "#{t('initial_requests_list')}", admin_root_path(state: 'initial')
+        / %li.item= link_to "#{t('processing_requests_list')}", admin_root_path(state: 'processing')
+        / %li.item= link_to "#{t('complete_requests_list')}", admin_root_path(state: 'complete')
+        / %li.item= link_to "#{t('close_requests_list')}", admin_root_path(state: 'close')
         %li.header=  t('sidebar.background_management')
         %li.item= link_to "#{t('add_new_user')}", new_admin_user_path
         %li.item= link_to "#{t('category_list')}", admin_categories_path

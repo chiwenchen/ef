@@ -94,3 +94,7 @@ en:
     invalid_equipment_id: Equipment Id Invalid
   placeholder:
     equipment_id: 'please enter EF-xxxx, example: EF-1234'
+  staff_number: Staff Number
+  customer_number: Customer Number
+  owned_requests_amount: Owned Claim Amount
+  detail: Detail

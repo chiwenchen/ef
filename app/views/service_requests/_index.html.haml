@@ -86,6 +86,12 @@
               .col-md-4= f.label :title_cont, '標題包含'
               .col-md-8= f.search_field :title_cont, class: 'form-control'
             .form-group.row
+              .col-md-4= f.label :customer_username_cont, '客戶名稱包含'
+              .col-md-8= f.search_field :customer_username_cont, class: 'form-control'
+            .form-group.row
+              .col-md-4= f.label :customer_customer_number_start, '客戶編號包含'
+              .col-md-8= f.search_field :customer_customer_number_start, class: 'form-control'
+            .form-group.row
               .col-md-12= f.button :submit, class: 'btn btn-primary'
   .row
     .col-md-12
