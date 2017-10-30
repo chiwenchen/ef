@@ -96,3 +96,8 @@
     invalid_equipment_id: 設備編號格式錯誤
   placeholder:
     equipment_id: '請輸入 EF-xxxx, 例如 EF-1234'
+  staff_number: 員工編號
+  customer_number: 客戶編號
+  owned_requests_amount: 主負責客訴單數量
+  detail: 細節
+  created_at: 建立日期

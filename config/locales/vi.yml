@@ -96,3 +96,8 @@ vi:
     invalid_equipment_id: mã số thiết bị không có hiệu lực
   placeholder:
     equipment_id: 'nhập vào EF-xxxx, ví dụ EF-1234'
+  staff_number:
+  customer_number:
+  owned_requests_amount: 
+  detail: 
+  created_at: 

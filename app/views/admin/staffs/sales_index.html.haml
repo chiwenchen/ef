@@ -7,40 +7,36 @@
         %table.table.table-bordered
           %thead
             %tr
+              %th= t('staff_number')
               %th= t('name')
+              %th= t('owned_requests_amount')
               %th= t('requests_amount')
               %th= t('requests')
               %th= t('register_date')
           %tbody
             - @sales.each do |sales|
               %tr
-                %td= sales.username
+                %td= sales.staff_number
+                %td= link_to sales.username, edit_admin_user_path(sales)
                 %td= sales.assigned_service_requests_as_owner.count
-                %td
-                  %ul.nav.nav-stacked
-                    - sales.assigned_service_requests_as_owner.each do |s|
-                      %li= render 'admin/common/path_to_request_show', s: s
-                %td= sales.created_at.to_s(:simple_date)
-.row
-  .col-md-12
-    .box
-      .box-header.with-border 
-        %strong= t('sales_list')
-      .box-body
-        %table.table.table-bordered
-          %thead
-            %tr
-              %th= t('name')
-              %th= t('requests_amount')
-              %th= t('requests')
-              %th= t('register_date')
-          %tbody
-            - @sales.each do |sales|
-              %tr
-                %td= sales.username
                 %td= sales.assigned_service_requests_as_sales.count
                 %td
-                  %ul.nav.nav-stacked
-                    - sales.assigned_service_requests_as_sales.each do |s|
-                      %li= render 'admin/common/path_to_request_show', s: s
+                  .button(type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#requestDetail#{sales.id}")
+                    = t('detail')
                 %td= sales.created_at.to_s(:simple_date)
+                .modal.fade(id="requestDetail#{sales.id}"tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                  .modal-dialog(role="document")
+                    .modal-content
+                      .modal-header
+                        %h4.modal-title Request Detail
+                      .modal-body
+                        %h4 主負責客訴單
+                        %ul.nav.nav-stacked
+                          - sales.assigned_service_requests_as_owner.each do |s|
+                            %li= render 'admin/common/path_to_request_show', s: s
+                        %hr
+                        %h4 客訴單
+                        %ul.nav.nav-stacked
+                          - sales.assigned_service_requests_as_sales.each do |s|
+                            %li= render 'admin/common/path_to_request_show', s: s
+= paginate @sales
