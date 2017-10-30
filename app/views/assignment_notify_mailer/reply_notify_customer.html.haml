@@ -1,0 +1,5 @@
+%p= "Dear #{@user.username}"
+/ %p= "You have been assigned to a request, please click below line to see the request detail and start process ASAP, thanks"
+%p= "You have a new Claim response please go below link to check the response, thanks for all your support."
+%p.strong= link_to 'Claim', customer_service_request_url(@service_request)
+
