@@ -98,3 +98,4 @@ en:
   customer_number: Customer Number
   owned_requests_amount: Owned Claim Amount
   detail: Detail
+  created_at: Created at

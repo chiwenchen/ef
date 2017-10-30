@@ -89,4 +89,5 @@ class ServiceRequest < ActiveRecord::Base
   def tech
     self.customer.tech
   end
+
 end

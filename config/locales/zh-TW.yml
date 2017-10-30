@@ -100,3 +100,4 @@
   customer_number: 客戶編號
   owned_requests_amount: 主負責客訴單數量
   detail: 細節
+  created_at: 建立日期

@@ -100,3 +100,4 @@ vi:
   customer_number:
   owned_requests_amount: 
   detail: 
+  created_at: 
