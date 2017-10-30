@@ -86,6 +86,15 @@
               .col-md-4= f.label :title_cont, '標題包含'
               .col-md-8= f.search_field :title_cont, class: 'form-control'
             .form-group.row
+              .col-md-4= f.label :customer_username_cont, '客戶名稱包含'
+              .col-md-8= f.search_field :customer_username_cont, class: 'form-control'
+            .form-group.row
+              .col-md-4= f.label :customer_customer_number_start, '客戶編號包含'
+              .col-md-8= f.search_field :customer_customer_number_start, class: 'form-control'
+            .form-group.row
+              .col-md-4= f.label :state_eq, '狀態包含'
+              .col-md-8= f.select :state_eq, ServiceRequest.aasm.states.map(&:name), include_blank: true, class: 'form-control'
+            .form-group.row
               .col-md-12= f.button :submit, class: 'btn btn-primary'
   .row
     .col-md-12
@@ -107,6 +116,7 @@
                 %th= t('service_request.state')
                 %th.hidden-xs.hidden-sm= t('service_request.comments_amount')
                 %th= t('service_request.operation')
+                %th= sort_link [role, @q], :created_at, t('created_at'), default_order: :desc
             %tbody
               - service_requests = (service_requests or service_requests_mainly_response)
               - service_requests.each do |sr|
@@ -130,3 +140,4 @@
                     - if current_user.customer? && !sr.close?
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
+                  %td= sr.created_at.to_s(:simple_date)

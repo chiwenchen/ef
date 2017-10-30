@@ -7,6 +7,7 @@
         %table.table.table-bordered
           %thead
             %tr
+              %th= t('staff_number')
               %th= t('name')
               %th= t('requests_amount')
               %th= t('requests')
@@ -14,10 +15,20 @@
           %tbody
             - @teches.each do |tech|
               %tr
-                %td= tech.username
+                %td= tech.staff_number
+                %td= link_to tech.username, edit_admin_user_path(tech)
                 %td= tech.assigned_service_requests_as_tech.count
                 %td
-                  %ul.nav.nav-stacked
-                    - tech.assigned_service_requests_as_tech.each do |s|
-                      %li= render 'admin/common/path_to_request_show', s: s
+                  .button(type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#requestDetail#{tech.id}")
+                    = t('detail')
                 %td= tech.created_at.to_s(:simple_date)
+                .modal.fade(id="requestDetail#{tech.id}"tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                  .modal-dialog(role="document")
+                    .modal-content
+                      .modal-header
+                        %h4.modal-title Request Detail
+                      .modal-body
+                        %ul.nav.nav-stacked
+                          - tech.assigned_service_requests_as_tech.each do |s|
+                            %li= render 'admin/common/path_to_request_show', s: s
+= paginate @teches

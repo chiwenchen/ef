@@ -20,6 +20,8 @@
 #  owner_id               :uuid
 #  sales_id               :uuid
 #  tech_id                :uuid
+#  staff_number           :string
+#  customer_number        :string
 #
 
 class User < ActiveRecord::Base
@@ -46,7 +48,7 @@ class User < ActiveRecord::Base
   belongs_to :tech, class_name: 'User'
   has_one :user, class_name: 'User', foreign_key: 'tech_id'
 
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, :email
 
   attr_accessor :role
   devise :database_authenticatable,

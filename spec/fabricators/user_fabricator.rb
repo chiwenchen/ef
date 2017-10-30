@@ -20,6 +20,8 @@
 #  owner_id               :uuid
 #  sales_id               :uuid
 #  tech_id                :uuid
+#  staff_number           :string
+#  customer_number        :string
 #
 
 Fabricator(:user) do

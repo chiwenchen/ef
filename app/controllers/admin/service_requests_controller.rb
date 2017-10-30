@@ -3,13 +3,7 @@ class Admin::ServiceRequestsController < AdminController
 
   def index
     @q = ServiceRequest.search(params[:q])
-    if params[:state].present?
-      @service_requests = ServiceRequest.where(state: params[:state]).order('created_at DESC')
-    elsif params[:q].present?
-      @service_requests = @q.result
-    else
-      @service_requests = ServiceRequest.all.order('created_at DESC')
-    end
+    @service_requests = @q.result.includes(:customer)
     respond_to do |format|
       format.html
       if params[:service_request_ids]

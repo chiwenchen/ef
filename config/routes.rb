@@ -67,7 +67,7 @@ Rails.application.routes.draw do
          get 'responsible_table', to: 'customers#responsible_table' 
       end
     end
-    resources :users, only: [:new, :create, :update]
+    resources :users, only: [:new, :create, :edit, :update]
   end
 
 end
