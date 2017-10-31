@@ -1,4 +1,7 @@
 %p= "Hi, #{@user.username}"
 / %p= "You have been assigned to a request, please click below line to see the request detail and start process ASAP, thanks"
 %p= "您已經被指派到一張新的客訴單，請點擊以下連結前往"
+%p= "客戶名稱：#{@service_request.customer.username}"
+%p= "客訴單標題：#{@service_request.customer.title}"
+%p= "共有#{@service_request.images.count}個附圖，#{@service_request.attachemnts.count}個附件"
 %p.strong= link_to '客訴單', staff_service_request_url(@service_request)
