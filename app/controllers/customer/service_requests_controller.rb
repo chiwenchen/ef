@@ -36,6 +36,7 @@ class Customer::ServiceRequestsController < CustomersController
 
         @service_request.deadline = Date.today + 7.days
         @service_request.save
+        AssignmentNotifyMailer.notify_customer(current_user, @service_request).deliver_now
         current_user.responsibles.each do |responsible|
           LineService.send(
             responsible.line_user_id,

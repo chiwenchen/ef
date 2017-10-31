@@ -21,6 +21,12 @@ class Staff::ServiceRequestsController < StaffsController
 
   def change_state
     @service_request.send("#{params[:aasm_event]}!")
+
+    recipients = [@service_request.customer] + @service_request.customer.responsibles
+    recipients.each do |recipient|
+      AssignmentNotifyMailer.change_state(recipient, @service_request).deliver_now
+    end
+    
     redirect_to staff_service_request_path(@service_request)
   end
 

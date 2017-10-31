@@ -109,8 +109,9 @@
         = t('images')
       .box-body
         - @service_request.images.each do |image|
-          = link_to image.file_path.url, target: '_blank' do
-            = image_tag image.file_path, size: '320x240'
+          .div
+            = link_to image.file_path.url, target: '_blank' do
+              = image_tag image.file_path, size: '320x240'
 .row
   .col-md-12
     .box
@@ -118,7 +119,7 @@
         = t('attachments')
       .box-body
         - @service_request.attachments.each do |attachment|
-          = link_to File.basename(attachment.file_path.path), attachment.file_path.url, target: '_blank'
+          .div= link_to File.basename(attachment.file_path.path), attachment.file_path.url, target: '_blank'
 - unless @service_request.close?
   .row
     .col-md-12

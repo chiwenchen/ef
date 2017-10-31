@@ -5,4 +5,5 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 Time::DATE_FORMATS[:simple_date] = "%Y年%m月%d日"
+Time::DATE_FORMATS[:simple_date_en] = "%d-%m-%Y"
 Time::DATE_FORMATS[:full_datetime] = "%Y.%m.%d %p %I:%M"
