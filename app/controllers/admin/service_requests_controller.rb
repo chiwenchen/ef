@@ -3,7 +3,7 @@ class Admin::ServiceRequestsController < AdminController
 
   def index
     @q = ServiceRequest.search(params[:q])
-    @service_requests = @q.result.includes(:customer)
+    @service_requests = @q.result.includes(:customer).page(params[:page]).per(10)
     respond_to do |format|
       format.html
       if params[:service_request_ids]
@@ -15,6 +15,24 @@ class Admin::ServiceRequestsController < AdminController
         end
       end
     end
+  end
+
+  def index_for_certain_user
+    @q = ServiceRequest.search(params[:q])
+    user = User.find(params[:user_id])
+    case user.role_list.first
+    when 'sales'
+      if params[:role] == 'owner'
+        @service_requests = user.assigned_service_requests_as_owner.page(params[:page]).per(10)
+      else
+        @service_requests = user.assigned_service_requests_as_sales.page(params[:page]).per(10)
+      end
+    when 'tech'
+      @service_requests = user.assigned_service_requests_as_tech.page(params[:page]).per(10)
+    when 'customer'
+      @service_requests = user.service_requests.page(params[:page]).per(10)
+    end
+    render :index    
   end
 
   def show

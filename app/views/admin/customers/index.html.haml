@@ -18,17 +18,6 @@
                 %td= customer.customer_number
                 %td= link_to customer.username, edit_admin_user_path(customer)
                 %td= customer.service_requests.count
-                %td
-                  .button(type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#requestDetail#{customer.id}")
-                    細節
+                %td= link_to 'Detail', index_for_certain_user_admin_service_requests_path(user_id: customer)
                 %td= customer.created_at.to_s(:simple_date)
-                .modal.fade(id="requestDetail#{customer.id}"tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-                  .modal-dialog(role="document")
-                    .modal-content
-                      .modal-header
-                        %h4.modal-title Request Detail
-                      .modal-body
-                        %ul.nav.nav-stacked
-                          - customer.service_requests.each do |s|
-                            %li= render 'admin/common/path_to_request_show', s: s
 = paginate @customers
