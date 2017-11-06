@@ -38,6 +38,7 @@ en:
     updated: Claim was successfully updated.
     destroyed: Claim was successfully destroyed.
     basic_info: Claim Basic Information
+    search_form: Search Form
   add_category_success: Category was successfully added.
   confirm_assignment: Are you sure change this assignment?
   delete_category_success: Category was successfully destroyed.
@@ -96,6 +97,7 @@ en:
     equipment_id: 'please enter EF-xxxx, example: EF-1234'
   staff_number: Staff Number
   customer_number: Customer Number
+  owned_requests: Owned Claim
   owned_requests_amount: Owned Claim Amount
   detail: Detail
   created_at: Created at
@@ -112,3 +114,7 @@ en:
       mini_magick_processing_error: "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
       min_size_error: "File size should be greater than 1MB"
       max_size_error: "File size should be less than 10MB"
+  sales: Sales
+  tech: Tech
+  admin: Admin
+  customer: Customer

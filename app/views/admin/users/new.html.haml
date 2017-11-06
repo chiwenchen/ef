@@ -4,13 +4,16 @@
     %hr
     = simple_form_for [:admin, User.new] do |f|
       .row
+        .col-md-6= f.input :customer_number, input_html: {class: 'form-control'}, placeholder: '只有新增客戶帳號需填寫'
+        .col-md-6= f.input :staff_number, input_html: {class: 'form-control'}, placeholder: '只有新增員工帳號需填寫'
+      .row
         .col-md-6= f.input :username, input_html: {class: 'form-control'}, required: true
         .col-md-6= f.input :email, as: :email, input_html: {class: 'form-control'}, required: true
       .row
         .col-md-6= f.input :password, input_html: {class: 'form-control'}, required: true
         .col-md-6= f.input :password_confirmation, input_html: {class: 'form-control'}, required: true
       .row
-        .col-md-12= f.input :role, as: :radio_buttons, collection: User.available_role_names, checked: :sales
+        .col-md-12= f.input :role, as: :radio_buttons, collection: User.available_role_names.map{ |role| [I18n.t(role), role]}, checked: :sales
       .row
         .col-md-12= f.button :submit, t('sign_up'), data: { disable_with: t('please_wait') }
     %hr

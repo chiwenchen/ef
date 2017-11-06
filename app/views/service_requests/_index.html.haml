@@ -1,7 +1,7 @@
 - if service_requests_mainly_response
   .row
     .col-md-6
-      .box
+      .box.collapsed-box
         .box-header.with-border
           %h3.box-title= t('service_request.search_form')
           .box-tools.pull-right
@@ -63,10 +63,11 @@
                     - if current_user.customer? && !sr.close?
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
+  = paginate service_requests_mainly_response
 - if service_requests
   .row
     .col-md-6
-      .box
+      .box.collapsed-box
         .box-header.with-border
           %h3.box-title= t('service_request.search_form')
           .box-tools.pull-right
@@ -141,3 +142,4 @@
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
                   %td= sr.created_at.to_s(:simple_date)
+  = paginate service_requests

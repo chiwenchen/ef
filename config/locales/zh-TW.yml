@@ -38,6 +38,7 @@
     updated: 已成功更新客訴單
     destroyed: 已刪除客訴單
     basic_info: 客訴單基本資料
+    search_form: 搜尋表單
   add_category_success: 分類已新增
   delete_category_success: 分類已刪除
   delete_confirm: 確定要刪除嗎?
@@ -98,6 +99,7 @@
     equipment_id: '請輸入 EF-xxxx, 例如 EF-1234'
   staff_number: 員工編號
   customer_number: 客戶編號
+  owned_requests: 主負責客訴單
   owned_requests_amount: 主負責客訴單數量
   detail: 細節
   created_at: 建立日期
@@ -114,3 +116,7 @@
       mini_magick_processing_error: "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
       min_size_error: "File size should be greater than 1MB"
       max_size_error: "File size should be less than 10MB"
+  sales: 業務
+  tech: 技術人員
+  admin: 管理員
+  customer: 客戶

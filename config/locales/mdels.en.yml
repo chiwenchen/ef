@@ -1,0 +1,24 @@
+vt:
+  activerecord:
+    attributes:
+      user:
+        username: User Name
+        sales: Sales
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+        role: Role
+        customer_number:  Customer number
+        staff_number: Staff number
+      service_request:
+        title: Title
+        category: Category
+        description: Description
+        deadline: Deadline
+        initial: Initial
+        processing: Processing
+        complete: Completed
+        close: Closed
+      category:
+        tw_title: Chinese title
+        en_title: English title

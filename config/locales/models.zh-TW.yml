@@ -1,4 +1,4 @@
-vt:
+zh-TW:
   activerecord:
     attributes:
       user:
@@ -8,6 +8,8 @@ vt:
         password: 密碼
         password_confirmation: 密碼確認
         role: 角色
+        customer_number: 客戶編號
+        staff_number: 員工編號
       service_request:
         title: 標題
         category: 分類
