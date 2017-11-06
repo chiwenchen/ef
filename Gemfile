@@ -67,6 +67,8 @@ gem 'awesome_rails_console'
 
 gem 'kaminari'
 
+gem 'rollbar'
+
 
 group :development do
   gem 'web-console', '~> 2.0'
