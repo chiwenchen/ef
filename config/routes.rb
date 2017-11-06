@@ -56,6 +56,9 @@ Rails.application.routes.draw do
         post 'change_state', to: 'service_requests#change_state'
         post 'update_assignment', to: 'service_requests#update_assignment'
       end
+      collection do
+        get 'index_for_certain_user', to: 'service_requests#index_for_certain_user'
+      end
     end
     get 'admin_index', to: 'staffs#admin_index'
     get 'sales_index', to: 'staffs#sales_index'

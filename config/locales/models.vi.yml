@@ -8,6 +8,8 @@ vi:
         password: mật mã        
         password_confirmation: xác nhận mật mã      
         role: vai trò
+        customer_number: 
+        staff_number:
       service_request:
         title: tiêu đề
         category: phân loại        

@@ -98,6 +98,7 @@ vi:
     equipment_id: 'nhập vào EF-xxxx, ví dụ EF-1234'
   staff_number:
   customer_number:
+  owned_requests:
   owned_requests_amount: 
   detail: 
   created_at:
@@ -114,3 +115,7 @@ vi:
       mini_magick_processing_error: "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
       min_size_error: "File size should be greater than 1MB"
       max_size_error: "File size should be less than 10MB"
+  sales: sales
+  tech: tech
+  admin: admin
+  customer: customer

@@ -16,4 +16,5 @@
                 %td= admin.staff_number
                 %td= link_to admin.username, edit_admin_user_path(admin)
                 %td= admin.created_at.to_s(:simple_date)
-= paginate @admins
+%p= paginate @admins
+%p= "共 #{@admins&.size || 0} 位管理員"
