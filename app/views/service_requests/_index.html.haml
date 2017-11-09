@@ -63,7 +63,7 @@
                     - if current_user.customer? && !sr.close?
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
-  = paginate service_requests_mainly_response
+  = paginate service_requests_mainly_response if service_requests_mainly_response.present?
 - if service_requests
   .row
     .col-md-6
@@ -142,4 +142,4 @@
                       = link_to t('edit'), edit_customer_service_request_path(sr)
                       = link_to t('delete'), customer_service_request_path(sr), method: 'DELETE', data: { confirm: t('delete_confirm')}
                   %td= sr.created_at.to_s(:simple_date)
-  = paginate service_requests
+  = paginate service_requests if service_requests.present?
