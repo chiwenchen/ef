@@ -19,4 +19,4 @@
                 %td= link_to tech.assigned_service_requests_as_tech.count, index_for_certain_user_admin_service_requests_path(user_id: tech)
                 %td= tech.created_at.to_s(:simple_date)
 %p= paginate @teches
-%p= "共 #{@teches&.size || 0} 位技術人員"
+%p= "共 #{(@teches and @teches.size) || 0} 位技術人員"
