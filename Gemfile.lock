@@ -580,7 +580,7 @@ DEPENDENCIES
   prawn-table
   pry
   pry-byebug
-  rails (= 4.2.8)
+  rails
   rails-assets-adminlte!
   rails-i18n
   ransack
@@ -601,7 +601,7 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.2.5p319
 
 BUNDLED WITH
    1.15.4
