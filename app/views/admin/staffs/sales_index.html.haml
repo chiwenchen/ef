@@ -21,4 +21,4 @@
                 %td= link_to sales.assigned_service_requests_as_sales.count, index_for_certain_user_admin_service_requests_path(user_id: sales, role: 'sales')
                 %td= sales.created_at.to_s(:simple_date)
 %p= paginate @sales
-%p= "共 #{@sales&.size || 0} 位業務"
+%p= "共 #{(@sales and @sales.size) || 0} 位業務"
