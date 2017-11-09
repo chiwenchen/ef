@@ -20,4 +20,4 @@
                 %td= customer.service_requests.count
                 %td= link_to 'Detail', index_for_certain_user_admin_service_requests_path(user_id: customer)
                 %td= customer.created_at.to_s(:simple_date)
-= paginate @customers
+= paginate @customers if @customers.present?
