@@ -1,7 +1,7 @@
 .row
   .col-md-12
     .box
-      .box-header.with-border 
+      .box-header.with-border
         %strong= t('admin_list')
       .box-body
         %table.table.table-bordered
@@ -17,4 +17,4 @@
                 %td= link_to admin.username, edit_admin_user_path(admin)
                 %td= admin.created_at.to_s(:simple_date)
 %p= paginate @admins if @admins.present?
-%p= "共 #{(@admins and @admins.size) || 0} 位管理員"
+%p= "共 #{User.admins.size} 位管理員"

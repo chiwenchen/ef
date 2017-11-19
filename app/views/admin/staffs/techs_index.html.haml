@@ -1,7 +1,7 @@
 .row
   .col-md-12
     .box
-      .box-header.with-border 
+      .box-header.with-border
         %strong= t('tech_list')
       .box-body
         %table.table.table-bordered
@@ -19,4 +19,4 @@
                 %td= link_to tech.assigned_service_requests_as_tech.count, index_for_certain_user_admin_service_requests_path(user_id: tech)
                 %td= tech.created_at.to_s(:simple_date)
 %p= paginate @teches if @teches.present?
-%p= "共 #{(@teches and @teches.size) || 0} 位技術人員"
+%p= "共 #{User.teches.size} 位技術人員"
