@@ -8,13 +8,13 @@ class AssignmentNotifyMailer < ApplicationMailer
   def notify_customer(customer, service_request)
     @customer = customer
     @service_request = service_request
-    mail(to: @user.email, subject: 'EF Claim Service System - New Claim Created')
+    mail(to: @customer.email, subject: 'EF Claim Service System - New Claim Created')
   end
 
   def reply_notify_customer(customer, service_request)
     @customer = customer
     @service_request = service_request
-    mail(to: @user.email, subject: 'EF Claim Service System - New Reply Coming')
+    mail(to: @customer.email, subject: 'EF Claim Service System - New Reply Coming')
   end
 
   def change_state(user, service_request)
