@@ -26,7 +26,7 @@ class Staff::ServiceRequestsController < StaffsController
     recipients.each do |recipient|
       AssignmentNotifyMailer.change_state(recipient, @service_request).deliver_now
     end
-    
+
     redirect_to staff_service_request_path(@service_request)
   end
 
@@ -37,8 +37,8 @@ class Staff::ServiceRequestsController < StaffsController
     end
 
     def service_request_params
-      params.require(:service_request).permit(:title, :category_id, :description, :deadline, 
-        images_attributes: [:id, :file, :_destroy], 
+      params.require(:service_request).permit(:title, :category_id, :description, :deadline,
+        images_attributes: [:id, :file, :_destroy],
         attachments_attributes: [:id, :file, :_destroy]
       )
     end
@@ -48,9 +48,9 @@ class Staff::ServiceRequestsController < StaffsController
       has_search_term_for_main = false
       params[:q].each { |k,v| has_search_term_for_main = true if v != '' } if params[:q]
       if @q and has_search_term_for_main
-        @service_requests_mainly_response = @q.result.order('created_at DESC')
+        @service_requests_mainly_response = @q.result.order('created_at DESC').page(params[:page]).per(10)
       else
-        @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC')
+        @service_requests_mainly_response = ServiceRequest.joins(:customer).where(users: {owner_id: current_user.id}).order('created_at DESC').page(params[:page]).per(10)
       end
     end
 
@@ -59,9 +59,9 @@ class Staff::ServiceRequestsController < StaffsController
       has_search_term = false
       params[:q].each { |k,v| has_search_term = true if v != '' } if params[:q]
       if @q and has_search_term
-        @service_requests = @q.result.order('created_at DESC')
+        @service_requests = @q.result.order('created_at DESC').page(params[:page]).per(10)
       else
-        @service_requests = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).order('created_at DESC')
+        @service_requests = ServiceRequest.joins(:customer).where(users: {sales_id: current_user.id}).order('created_at DESC').page(params[:page]).per(10)
       end
     end
     def request_index_for_tech
@@ -69,9 +69,9 @@ class Staff::ServiceRequestsController < StaffsController
       has_search_term = false
       params[:q].each { |k,v| has_search_term = true if v != '' } if params[:q]
       if @q and has_search_term
-        @service_requests = @q.result.order('created_at DESC')
+        @service_requests = @q.result.order('created_at DESC').page(params[:page]).per(10)
       else
-        @service_requests = ServiceRequest.joins(:customer).where(users: {tech_id: current_user.id}).order('created_at DESC')
+        @service_requests = ServiceRequest.joins(:customer).where(users: {tech_id: current_user.id}).order('created_at DESC').page(params[:page]).per(10)
       end
     end
 end
