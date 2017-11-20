@@ -3,7 +3,7 @@ class Customer::ServiceRequestsController < CustomersController
 
   def index
     @q = ServiceRequest.where(customer: current_user).search(params[:q])
-    @service_requests = @q.result.order('created_at DESC')
+    @service_requests = @q.result.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def show
@@ -89,7 +89,7 @@ class Customer::ServiceRequestsController < CustomersController
 
     def service_request_params
       params.require(:service_request).permit(:title, :category_id, :description, :equipment_id,
-        images_attributes: [:id, :file_path, :_destroy], 
+        images_attributes: [:id, :file_path, :_destroy],
         attachments_attributes: [:id, :file_path, :_destroy]
       )
     end
