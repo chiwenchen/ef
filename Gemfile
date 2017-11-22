@@ -68,6 +68,7 @@ gem 'awesome_rails_console'
 gem 'kaminari'
 
 gem 'rollbar'
+gem 'file_validators'
 
 
 group :development do
