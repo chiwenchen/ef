@@ -12,4 +12,5 @@
 class Attachment < ActiveRecord::Base
   belongs_to :service_request, inverse_of: :attachments
   mount_uploader :file_path, AttachmentUploader
+  validates :file_path, file_size: { less_than: 20.megabytes }
 end
