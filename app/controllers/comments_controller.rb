@@ -19,6 +19,12 @@ class CommentsController < ApplicationController
       AssignmentNotifyMailer.reply_notify_customer(@service_request.customer, @service_request).deliver_now
       redirect_to staff_service_request_path(@service_request)
     end
+    @service_request.customer.responsibles.each do |responsible|
+      # comment createor will not receive the notify mail.
+      if responsible != current_user
+        AssignmentNotifyMailer.reply_notify_staff(responsible, @service_request).deliver_now
+      end
+    end
   end
 
   private

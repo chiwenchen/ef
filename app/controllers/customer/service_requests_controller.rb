@@ -38,6 +38,7 @@ class Customer::ServiceRequestsController < CustomersController
         @service_request.save
         AssignmentNotifyMailer.notify_customer(current_user, @service_request).deliver_now
         current_user.responsibles.each do |responsible|
+          AssignmentNotifyMailer.notify_staff(responsible, @service_request).deliver_now
           LineService.send(
             responsible.line_user_id,
             "客戶 #{current_user.username} 已新增一筆客訴單，單號：#{@service_request.request_id}，請前往系統處理。"
