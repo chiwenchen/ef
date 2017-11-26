@@ -11,10 +11,22 @@ class AssignmentNotifyMailer < ApplicationMailer
     mail(to: @customer.email, subject: 'EF Claim Service System - New Claim Created')
   end
 
+  def notify_staff(staff, service_request)
+    @staff = staff
+    @service_request = service_request
+    mail(to: @staff.email, subject: '易鋒客訴系統 - 新客訴單開立通知')
+  end
+
   def reply_notify_customer(customer, service_request)
     @customer = customer
     @service_request = service_request
     mail(to: @customer.email, subject: 'EF Claim Service System - New Reply Coming')
+  end
+
+  def reply_notify_staff(staff, service_request)
+    @staff = staff
+    @service_request = service_request
+    mail(to: @staff.email, subject: '易鋒客訴系統 - 有新的回覆')
   end
 
   def change_state(user, service_request)
