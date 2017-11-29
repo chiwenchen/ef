@@ -13,10 +13,10 @@ class ServiceRequestPdf < Prawn::Document
       tech = (customer.tech.username if customer.tech) || '-'
       table_object << [customer.username, sr.equipment_id, sr.title, sr.deadline, sr.state, owner, sales, tech]
     end
-    # font_families.update("zhonly" => {
-    #   :normal => Rails.root.join("app/assets/fonts/cwTeXKai-zhonly.ttf")
-    # })
-    # font 'zhonly'
+    font_families.update("zhonly" => {
+      :normal => Rails.root.join("app/assets/fonts/msjh.ttf")
+    })
+    font 'zhonly'
     table(table_object, header: true, position: :center)
   end
 end
