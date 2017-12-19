@@ -3,7 +3,7 @@ class Admin::ServiceRequestsController < AdminController
 
   def index
     @q = ServiceRequest.search(params[:q])
-    @service_requests = @q.result.includes(:customer).page(params[:page]).per(10)
+    @service_requests = @q.result.includes(:customer).order(created_at: :asc).page(params[:page]).per(10)
     respond_to do |format|
       format.html
       if params[:service_request_ids]
@@ -23,16 +23,16 @@ class Admin::ServiceRequestsController < AdminController
     case user.role_list.first
     when 'sales'
       if params[:role] == 'owner'
-        @service_requests = user.assigned_service_requests_as_owner.page(params[:page]).per(10)
+        @service_requests = user.assigned_service_requests_as_owner.order(created_at: :desc).page(params[:page]).per(10)
       else
-        @service_requests = user.assigned_service_requests_as_sales.page(params[:page]).per(10)
+        @service_requests = user.assigned_service_requests_as_sales.order(created_at: :desc).page(params[:page]).per(10)
       end
     when 'tech'
-      @service_requests = user.assigned_service_requests_as_tech.page(params[:page]).per(10)
+      @service_requests = user.assigned_service_requests_as_tech.order(created_at: :desc).page(params[:page]).per(10)
     when 'customer'
-      @service_requests = user.service_requests.page(params[:page]).per(10)
+      @service_requests = user.service_requests.order(created_at: :desc).page(params[:page]).per(10)
     end
-    render :index    
+    render :index
   end
 
   def show
@@ -74,8 +74,8 @@ class Admin::ServiceRequestsController < AdminController
 
     def service_request_params
       if params[:service_request].present?
-        params.require(:service_request).permit(:title, :category_id, :description, :deadline, 
-          images_attributes: [:id, :file, :_destroy], 
+        params.require(:service_request).permit(:title, :category_id, :description, :deadline,
+          images_attributes: [:id, :file, :_destroy],
           attachments_attributes: [:id, :file, :_destroy]
         )
         params.require(:service_request).tap do |whitelisted|
