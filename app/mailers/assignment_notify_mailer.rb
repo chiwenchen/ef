@@ -29,9 +29,15 @@ class AssignmentNotifyMailer < ApplicationMailer
     mail(to: @staff.email, subject: '易鋒客訴系統 - 有新的回覆')
   end
 
-  def change_state(user, service_request)
+  def notify_customer_state_change(user, service_request)
     @user = user
     @service_request = service_request
     mail(to: @user.email, subject: 'EF Claim Service System - Change State')
+  end
+
+  def notify_staff_state_change(user, service_request)
+    @user = user
+    @service_request = service_request
+    mail(to: @user.email, subject: '易鋒客訴系統 - 客訴單狀態變更通知')
   end
 end
