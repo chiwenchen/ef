@@ -3,7 +3,9 @@ class Admin::ServiceRequestsController < AdminController
 
   def index
     @q = ServiceRequest.search(params[:q])
-    @service_requests = @q.result.includes(:customer).order(created_at: :asc).page(params[:page]).per(10)
+    service_requests = @q.result.includes(:customer).order(created_at: :asc)
+    @service_requests = service_requests.page(params[:page]).per(10)
+    @service_request_ids = service_requests.map(&:id)
     respond_to do |format|
       format.html
       if params[:service_request_ids]
