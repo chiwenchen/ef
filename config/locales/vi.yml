@@ -5,9 +5,9 @@ vi:
   sign_up: đăng ký
   username: họ tên
   password: mật khẩu
-  service_system: hệ thống dịch vụ khiếu nại  
+  service_system: hệ thống dịch vụ khiếu nại
   name: họ tên
-  set_locale: ngôn ngữ cài đặt 
+  set_locale: ngôn ngữ cài đặt
   requests_amount: số lượng đơn khiếu nại
   requests: đơn khiếu nại
   requests_list: danh sách khiếu nại
@@ -15,30 +15,30 @@ vi:
   initial_requests_list: chưa chỉ định
   processing_requests_list: đang sử lý
   complete_requests_list: đã hoàn thành
-  close_requests_list: đóng 
-  register_date: ngày tháng đăng ký  
+  close_requests_list: đóng
+  register_date: ngày tháng đăng ký
   service_request:
     title: tiêu đề
-    state: trạng thái 
+    state: trạng thái
     add: thêm
     index: số đơn
-    equipment_id: mã số tiết bị   
-    customer_name: tên khách hàng  
-    category: phân loại khiếu nại    
+    equipment_id: mã số tiết bị
+    customer_name: tên khách hàng
+    category: phân loại khiếu nại
     deadline: thời hạn
     assign_amount: số người chỉ định
-    comments_amount: số lượng trả lời tin nhắn    
+    comments_amount: số lượng trả lời tin nhắn
     operation: thao tác
     not_assigned: chưa chỉ định số người
     no_comments: không có tin nhắn
     reply: trả lời
     description: mô tả vấn đề
-    translate_desc: mô tả vấn đề - phiên dịch 
+    translate_desc: mô tả vấn đề - phiên dịch
     created: đã được thêm đơn khiếu nại
     updated: đã cập nhật đơn khiếu nại
     destroyed: đã xóa đơn khiếu nại
     basic_info: thông tin cơ bản của đơn khiếu nại
-  add_category_success: thêm danh mục phân loại 
+  add_category_success: thêm danh mục phân loại
   delete_category_success: xóa danh mục phân loại
   delete_confirm: cần xóa không?
   admin_list: danh sách quản lý
@@ -53,7 +53,7 @@ vi:
   control_panel: bảng điều khiển
   upload_images: hình ảnh tải lên
   add_images: thêm hình ảnh
-  upload_attachments: tải lên hồ sơ   
+  upload_attachments: tải lên hồ sơ
   add_attachments: thêm hồ sơ
   images: hình ảnh
   attachments: hồ sơ
@@ -62,7 +62,7 @@ vi:
   submit: gửi
   edit: chỉnh sửa
   delete: xóa
-  reply: phản hồi  
+  reply: phản hồi
   to_main_page: về trang đầu
   no_comments: không tin nhắn
   submit_comment: phản hồi
@@ -86,7 +86,7 @@ vi:
     manage_service_request: đơn khiếu nại
     responsible_table: nhân viên phụ trách
   comments:
-    title: thông điệp   
+    title: thông điệp
     unit: đơn vị
   chinese: tiếng trung
   english: tiếng Anh
@@ -99,8 +99,8 @@ vi:
   staff_number:
   customer_number:
   owned_requests:
-  owned_requests_amount: 
-  detail: 
+  owned_requests_amount:
+  detail:
   created_at:
   errors:
     messages:
@@ -119,3 +119,10 @@ vi:
   tech: tech
   admin: admin
   customer: customer
+  form:
+    request_id_cont: Request Id contain
+    equipment_id_cont: Equipment Id contain
+    title_cont: Title contain
+    customer_username_cont: Customer Name contain
+    customer_customer_number_start: Customer Number contain
+    state_eq: State equal

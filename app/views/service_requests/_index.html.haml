@@ -26,7 +26,7 @@
     .col-md-12
       .box
         %p#notice= notice
-        .box-header.with-border 
+        .box-header.with-border
           主負責
         .box-body
           %table.table.table-bordered
@@ -78,22 +78,23 @@
           - role = :staff if (role == :sales or role == :tech)
           = search_form_for [role, @q] do |f|
             .form-group.row
-              .col-md-4= f.label :request_id_cont, '單號包含'
+              .col-md-4= f.label :request_id_cont, t('form.request_id_cont')
               .col-md-8= f.search_field :request_id_cont, class: 'form-control'
             .form-group.row
-              .col-md-4= f.label :equipment_id_cont, '設備編號包含'
+              .col-md-4= f.label :equipment_id_cont, t('form.equipment_id_cont')
               .col-md-8= f.search_field :equipment_id_cont, class: 'form-control'
             .form-group.row
-              .col-md-4= f.label :title_cont, '標題包含'
+              .col-md-4= f.label :title_cont, t('form.title_cont')
               .col-md-8= f.search_field :title_cont, class: 'form-control'
+            - if !current_user.customer?
+              .form-group.row
+                .col-md-4= f.label :customer_username_cont, t('form.customer_username_cont')
+                .col-md-8= f.search_field :customer_username_cont, class: 'form-control'
+              .form-group.row
+                .col-md-4= f.label :customer_customer_number_start, t('form.customer_customer_number_start')
+                .col-md-8= f.search_field :customer_customer_number_start, class: 'form-control'
             .form-group.row
-              .col-md-4= f.label :customer_username_cont, '客戶名稱包含'
-              .col-md-8= f.search_field :customer_username_cont, class: 'form-control'
-            .form-group.row
-              .col-md-4= f.label :customer_customer_number_start, '客戶編號包含'
-              .col-md-8= f.search_field :customer_customer_number_start, class: 'form-control'
-            .form-group.row
-              .col-md-4= f.label :state_eq, '狀態包含'
+              .col-md-4= f.label :state_eq, t('form.state_eq')
               .col-md-8= f.select :state_eq, ServiceRequest.aasm.states.map(&:name), include_blank: true, class: 'form-control'
             .form-group.row
               .col-md-12= f.button :submit, class: 'btn btn-primary'

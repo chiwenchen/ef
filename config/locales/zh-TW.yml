@@ -35,6 +35,7 @@
     description: 問題描述
     translate_desc: 問題描述 - 翻譯
     created: 已成功新增客訴單
+    createion_fail: 新增客訴單失敗
     updated: 已成功更新客訴單
     destroyed: 已刪除客訴單
     basic_info: 客訴單基本資料
@@ -120,3 +121,10 @@
   tech: 技術人員
   admin: 管理員
   customer: 客戶
+  form:
+    request_id_cont: 單號包含
+    equipment_id_cont: 設備編號包含
+    title_cont: 標題包含
+    customer_username_cont: 客戶名稱包含
+    customer_customer_number_start: 客戶編號包含
+    state_eq: 狀態包含

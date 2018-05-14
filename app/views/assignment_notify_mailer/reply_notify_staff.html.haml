@@ -1,4 +1,4 @@
 %p= "#{@staff.username} 您好"
 %p= "您所負責的客訴單有一筆新的回覆，請前往系統查看"
-
+%p= "客訴單編號為 #{@service_request.request_id}"
 %p.strong= link_to '客訴單', staff_service_request_url(@service_request)

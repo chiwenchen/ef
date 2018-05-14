@@ -118,3 +118,10 @@ en:
   tech: Tech
   admin: Admin
   customer: Customer
+  form:
+    request_id_cont: Request Id contain
+    equipment_id_cont: Equipment Id contain
+    title_cont: Title contain
+    customer_username_cont: Customer Name contain
+    customer_customer_number_start: Customer Number contain
+    state_eq: State equal
