@@ -134,7 +134,7 @@ GEM
     enumerize (2.0.1)
       activesupport (>= 3.2)
     erubis (2.7.0)
-    excon (0.55.0)
+    excon (0.71.0)
     execjs (2.7.0)
     fabrication (2.16.1)
     faker (1.7.3)
